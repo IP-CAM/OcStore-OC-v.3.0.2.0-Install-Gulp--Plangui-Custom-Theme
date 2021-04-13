@@ -1,0 +1,28 @@
+.slider
+    margin: 40px 0 100px 0
+    @include media-breakpoint-down(lg)
+        margin: 40px 0
+    .item
+        img
+            display: block
+            margin: auto
+    .slider-arrow
+        opacity: 0.3
+        cursor: pointer
+        position: absolute
+        top: 50%
+        margin-top: -20px
+        width: 40px
+        height: 40px
+        display: flex
+        align-items: center
+        justify-content: center
+        background-color: $accent
+        border-radius: 4px
+        transition: opacity .3s ease
+        &:hover
+            opacity: 1
+        &_next
+            right: -80px
+        &_prev
+            left: -80px

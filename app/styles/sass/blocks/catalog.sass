@@ -1,0 +1,31 @@
+.product-card
+    text-align: center
+    border-bottom: 1px solid #ABABAB
+    width: 320px
+    margin-bottom: 60px
+    transition: all .3s ease
+    img
+        margin-bottom: 30px
+    p
+        color: #343434
+        margin: 0
+    h2
+        font-size: 25px
+        margin-bottom: 10px
+        font-weight: 300
+    a
+        opacity: 0
+        margin: auto
+        margin-top: 15px
+        transition: opacity .6s ease
+    &:hover
+         border-bottom: 1px solid #fff
+         a
+             opacity: 1
+    @include media-breakpoint-down(md)
+        margin-bottom: 40px
+        a
+            opacity: 1
+            margin-bottom: 30px
+        &:hover
+            border-bottom: 1px solid #ABABAB

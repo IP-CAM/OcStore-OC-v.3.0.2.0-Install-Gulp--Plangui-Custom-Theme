@@ -1,0 +1,103 @@
+.product-page
+    margin-top: 80px
+    
+.product-carousel-for
+    padding: 40px
+    box-shadow: 0px 40px 60px rgba(0, 0, 0, 0.03)
+    img
+        display: block
+        margin: auto
+        height: 100%
+        width: auto     
+
+.product-carousel-nav
+    margin-top: 10px
+    &_item
+        padding: 15px
+        height: 100px
+        border: 1px solid #EEEEEE
+        img
+            display: block
+            margin: auto
+            height: 100%
+            width: auto
+    .slick-slide
+        margin: 0 5px
+
+.product-card-content
+    padding-left: 40px
+    margin-left: 40px
+    border-left: 1px solid #ABABAB
+    @include media-breakpoint-down(md)
+        margin: 0
+        padding: 0
+        border: none
+        margin-top: 30px
+    h1
+        font-size: 35px
+        font-weight: 500
+        margin-bottom: 12px
+    p
+
+.value-block
+    display: flex
+
+.options
+    margin-left: 35px
+
+.amount
+    &_block
+        display: flex
+        align-items: center
+    &_input
+        width: 40px
+        height: 40px
+        margin: 0 15px
+        border: 1px solid #ABABAB
+        text-align: center
+    &_ctrl
+        cursor: pointer
+        font-size: 20px
+        color: #000
+
+.small-title
+    display: block
+    font-size: 12px
+    text-transform: uppercase
+    color: #ababab
+    margin-bottom: 5px
+    text-align: center
+    &_left
+        text-align: left
+
+.select-block
+    position: relative
+    width: 115px
+    height: 40px
+    border: 1px solid #ABABAB
+    padding-left: 20px
+    padding-top: 7px
+    overflow: hidden
+    &_icon
+        position: absolute
+        top: 7px
+        right: 15%
+    select
+        width: 130%
+        box-shadow: none
+        border: none
+        position: relative
+        background: none
+        &::after
+            content: ''
+            position: absolute
+            top: 0
+            right: 40%
+
+.price
+    color: $accent
+    font-size: 25px
+    font-weight: 700
+    margin: 20px 0
+    display: block
+

@@ -1,0 +1,70 @@
+.form-block
+    position: relative
+    display: flex
+    background-color: $yellow
+    border: 1px solid rgba(142, 34, 22, 0.36)
+    box-sizing: border-box
+    border-radius: 15px
+    padding: 35px
+    @include media-breakpoint-down(sm)
+        flex-direction: column
+    @include media-breakpoint-down(xs)
+        padding: 20px
+    input, textarea
+        position: relative
+        width: 370px
+        border: 1px solid rgba(142, 34, 22, 0.36)
+        margin-bottom: 15px
+        padding: 10px
+        background-color: #fff
+        z-index: 2
+        @include media-breakpoint-down(sm)
+            max-width: 100% 
+    .form
+        span
+            display: block
+            font-size: 14px
+            color: #525252
+            text-transform: uppercase
+        h2
+            font-size: 22px
+            margin-bottom: 15px
+            font-weight: 300
+        @include media-breakpoint-down(sm)
+            button
+                margin-bottom: 15px
+    .circle
+        position: absolute
+        right: 0
+        bottom: 0
+        z-index: 1
+    
+    .points-1
+        position: absolute
+        right: 15px
+        top: 82px
+        @include media-breakpoint-down(md)
+            top: 115px
+        @include media-breakpoint-down(sm)
+            display: none
+    
+    .points-2
+        position: absolute
+        top: 158px
+        right: 206px
+        @include media-breakpoint-down(sm)
+            display: none
+
+    .icon-text
+        margin-left: 65px
+        margin-bottom: 15px
+        display: flex
+        align-items: center
+        a
+            color: #000
+            font-size: 18px
+        svg
+            margin-right: 10px
+        @include media-breakpoint-down(sm)
+            margin: 0
+            margin: 10px 0

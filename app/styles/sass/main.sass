@@ -1,0 +1,88 @@
+@import config
+@import "blocks/**/*"
+
+.mm-menu_offcanvas
+    z-index: 10
+
+.img-responsive
+    max-width: 100%
+    height: auto
+
+.card
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-direction: column
+    width: 100%
+    padding: 75px 120px
+    background-color: $yellow
+    text-align: center
+    margin-bottom: 40px
+    border-radius: 5px
+    &_slayne
+        margin: 0
+    @include media-breakpoint-down(lg)
+        padding: 75px
+    @include media-breakpoint-down(sm)
+        padding: 40px
+    @include media-breakpoint-down(sm)
+        padding: 25px
+        p
+            font-size: 14px
+    h2
+        font-size: 25px
+        font-weight: 500
+    &-image
+        @include media-breakpoint-down(md)
+                max-width: 100%
+                height: auto
+                margin-bottom: 20px
+    p
+        margin: 0
+        padding: 0
+        margin-bottom: 25px
+
+.btn
+    width: 175px
+    padding: 10px
+    display: flex
+    justify-content: center
+    align-items: center
+    border-radius: 50px
+    background: none
+    box-shadow: none
+    border: none
+    svg
+        margin-right: 10px
+    &:hover
+        text-decoration: none
+    &_normal
+        border: 1px solid #000
+        color: #000
+        &:hover
+            color: #000
+    &_accent
+        border: 1px solid $accent
+        color: $accent
+        &:hover
+            color: $accent
+    &_up
+        text-transform: uppercase
+
+.center-image
+    text-align: center
+    margin-bottom: 40px
+
+.page-title
+    margin: 60px 0 50px 0
+    font-size: 35px
+    font-weight: 500
+    text-transform: uppercase
+    text-align: center
+
+.paragraph-text
+    h2, h1
+        font-size: 25px
+        font-weight: 500
+    img
+        margin-bottom: 30px
