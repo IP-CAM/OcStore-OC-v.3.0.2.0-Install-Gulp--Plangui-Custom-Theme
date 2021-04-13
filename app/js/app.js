@@ -1,7 +1,7 @@
-// Import jQuery module (npm i jquery)
-import $ from 'jquery'
-window.jQuery = $
-window.$ = $
+// // Import jQuery module (npm i jquery)
+// import $ from 'jquery'
+// window.jQuery = $
+// window.$ = $
 
 import mmenu from 'mmenu-js'
 import slick from 'slick-carousel'

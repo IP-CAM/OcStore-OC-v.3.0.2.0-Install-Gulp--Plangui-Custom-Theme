@@ -1,5 +1,5 @@
 let preprocessor = 'sass', // Preprocessor (sass, less, styl); 'sass' also work with the Scss syntax in blocks/ folder.
-		fileswatch   = 'html,htm,txt,json,md,woff2' // List of files extensions for watching & hard reload
+		fileswatch   = 'twig,html,htm,txt,json,md,woff2' // List of files extensions for watching & hard reload
 
 const { src, dest, parallel, series, watch } = require('gulp')
 const browserSync  = require('browser-sync').create()
@@ -22,10 +22,7 @@ const del          = require('del')
 
 function browsersync() {
 	browserSync.init({
-		server: {
-			baseDir: 'app/',
-			middleware: bssi({ baseDir: 'app/', ext: '.html' })
-		},
+		proxy: 'plangui.loc',
 		ghostMode: { clicks: false },
 		notify: false,
 		online: true,
@@ -55,7 +52,7 @@ function scripts() {
 			this.emit('end')
 		})
 		.pipe(rename('app.min.js'))
-		.pipe(dest('app/js'))
+		.pipe(dest('catalog/view/javascript'))
 		.pipe(browserSync.stream())
 }
 
@@ -66,15 +63,15 @@ function styles() {
 		.pipe(autoprefixer({ overrideBrowserslist: ['last 10 versions'], grid: true }))
 		.pipe(cleancss({ level: { 1: { specialComments: 0 } },/* format: 'beautify' */ }))
 		.pipe(rename({ suffix: ".min" }))
-		.pipe(dest('app/css'))
+		.pipe(dest('catalog/view/theme/plangui/stylesheet'))
 		.pipe(browserSync.stream())
 }
 
 function images() {
 	return src(['app/images/src/**/*'])
-		.pipe(newer('app/images/dist'))
+		.pipe(newer('catalog/view/theme/plangui/image'))
 		.pipe(imagemin())
-		.pipe(dest('app/images/dist'))
+		.pipe(dest('catalog/view/theme/plangui/image'))
 		.pipe(browserSync.stream())
 }
 
@@ -118,7 +115,7 @@ function startwatch() {
 	watch(`app/styles/${preprocessor}/**/*`, { usePolling: true }, styles)
 	watch(['app/js/**/*.js', '!app/js/**/*.min.js'], { usePolling: true }, scripts)
 	watch('app/images/src/**/*.{jpg,jpeg,png,webp,svg,gif}', { usePolling: true }, images)
-	watch(`app/**/*.{${fileswatch}}`, { usePolling: true }).on('change', browserSync.reload)
+	watch(`catalog/view/theme/plangui/template/**/*.{${fileswatch}}`, { usePolling: true }).on('change', browserSync.reload)
 }
 
 exports.scripts = scripts
