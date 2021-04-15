@@ -1,0 +1,130 @@
+{{ header }}
+
+
+
+<div class="container">
+  <h1 class="page-title">
+      События
+  </h1>
+</div>
+
+<div class="event-card">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-5">
+              <a href="#" class="event-image" style="background-image: url('../images/dist/event-image.png');"></a>
+          </div>
+          <div class="col-lg-7">
+              <div class="card card_slayne">
+                  <h2>Заголовок события</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur
+                      adipiscing elit, sed do eiusmod tempor 
+                      incididunt ut labore et dolore magna aliqua.
+                      Quis ipsum suspendisse ultrices gravida.
+                      Risus commodo viverra maecenas accumsan
+                      lacus vel facilisis.  Quis ipsum suspendisse 
+                      ultrices gravida. Risus commodo viverra maecenas
+                      accumsan lacus vel
+                  </p>
+                  <a href="#" class="btn btn_normal">Подробнее</a>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="event-card">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-5">
+              <a href="#" class="event-image" style="background-image: url('../images/dist/event-image.png');"></a>
+          </div>
+          <div class="col-lg-7">
+              <div class="card card_slayne">
+                  <h2>Заголовок события</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur
+                      adipiscing elit, sed do eiusmod tempor 
+                      incididunt ut labore et dolore magna aliqua.
+                      Quis ipsum suspendisse ultrices gravida.
+                      Risus commodo viverra maecenas accumsan
+                      lacus vel facilisis.  Quis ipsum suspendisse 
+                      ultrices gravida. Risus commodo viverra maecenas
+                      accumsan lacus vel
+                  </p>
+                  <a href="#" class="btn btn_normal">Подробнее</a>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="event-card">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-5">
+              <a href="#" class="event-image" style="background-image: url('../images/dist/event-image.png');"></a>
+          </div>
+          <div class="col-lg-7">
+              <div class="card card_slayne">
+                  <h2>Заголовок события</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur
+                      adipiscing elit, sed do eiusmod tempor 
+                      incididunt ut labore et dolore magna aliqua.
+                      Quis ipsum suspendisse ultrices gravida.
+                      Risus commodo viverra maecenas accumsan
+                      lacus vel facilisis.  Quis ipsum suspendisse 
+                      ultrices gravida. Risus commodo viverra maecenas
+                      accumsan lacus vel
+                  </p>
+                  <a href="#" class="btn btn_normal">Подробнее</a>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+<div class="container">
+  <ul class="breadcrumb">
+    {% for breadcrumb in breadcrumbs %}
+    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+    {% endfor %}
+  </ul>
+  <div class="row">{{ column_left }}
+    {% if column_left and column_right %}
+    {% set class = 'col-sm-6' %}
+    {% elseif column_left or column_right %}
+    {% set class = 'col-sm-9' %}
+    {% else %}
+    {% set class = 'col-sm-12' %}
+    {% endif %}
+    <div id="content" class="{{ class }} showcase-list">{{ content_top }}
+      <h1>{{ heading_title }}</h1>
+      {% if articles %}
+      <div class="row">  
+        {% for article in articles %} 
+        <div class="product-layout product-list col-xs-12">
+          <div class="product-thumb">
+            <div class="image"><a href="{{ article['href'] }}"><img src="{{ article['thumb'] }}" alt="{{ article['name'] }}" title="{{ article['name'] }}" class="img-responsive" /></a></div>
+            <div class="caption">
+              <h4><a href="{{ article['href'] }}">{{ article['name'] }}</a></h4>
+              <p class="description">{{ article['description'] }}</p>
+            </div>
+          </div>
+        </div>
+       {% endfor %}
+      </div>
+      <div class="row">
+        <div class="col-sm-6 text-left">{{ pagination }}</div>
+      </div>
+      {% else %}
+      <p>{{ text_empty }}</p>
+      <div class="buttons">
+        <div class="pull-right"><a href="{{ continue }}" class="btn btn-primary">{{ button_continue }}</a></div>
+      </div>
+      {% endif %}
+      {{ content_bottom }}</div>
+    {{ column_right }}</div>
+</div>
+{{ footer }}

@@ -47,11 +47,40 @@
                                       <path d="M4.53125 6.26953C4.72461 6.46289 5.04688 6.46289 5.24023 6.26953L9.42969 2.10156C9.62305 1.88672 9.62305 1.56445 9.42969 1.37109L8.93555 0.876953C8.74219 0.683594 8.41992 0.683594 8.20508 0.876953L4.875 4.18555L1.56641 0.876953C1.35156 0.683594 1.0293 0.683594 0.835938 0.876953L0.341797 1.37109C0.148438 1.56445 0.148438 1.88672 0.341797 2.10156L4.53125 6.26953Z" fill="#2D2D2D"/>
                                   </svg>                                        
                               </div>
-                              <select name="" id="">
-                                  <option value="50">50 мл.</option>
-                                  <option value="150">150 мл.</option>
-                                  <option value="200">200 мл.</option>
+
+                              <!-- {% for option in options %}
+                              {% if option.type == 'select' %}
+                              <div class="form-group{% if option.required %} required {% endif %}">
+                                <label class="control-label" for="input-option{{ option.product_option_id }}">{{ option.name }}</label>
+                                <select name="option[{{ option.product_option_id }}]" id="input-option{{ option.product_option_id }}" class="form-control">
+                                  <option value="">{{ text_select }}</option>
+                                  {% for option_value in option.product_option_value %}
+                                  <option value="{{ option_value.product_option_value_id }}">{{ option_value.name }}
+                                  {% if option_value.price %}
+                                  ({{ option_value.price_prefix }}{{ option_value.price }})
+                                  {% endif %} </option>
+                                  {% endfor %}
+                                </select>
+                              </div>
+                              {% endif %}
+                              {% endfor %} -->
+
+                              {% for option in options %}
+                              {% if option.type == 'select' %}
+                              <div class="form-group{% if option.required %} required {% endif %}">
+                                <label class="control-label" for="input-option{{ option.product_option_id }}">{{ option.name }}</label>
+                              <select name="option[{{ option.product_option_id }}]" id="input-option{{ option.product_option_id }}">
+                                  <option value="">{{ text_select }}</option>
+                                  {% for option_value in option.product_option_value %}
+                                  <option value="{{ option_value.product_option_value_id }}">{{ option_value.name }}
+                                  {% if option_value.price %}
+                                  ({{ option_value.price_prefix }}{{ option_value.price }})
+                                  {% endif %} </option>
+                                  {% endfor %}
                               </select>
+                            </div>
+                              {% endif %}
+                              {% endfor %}
                           </div>                          
                       </div>
                   </div> 
