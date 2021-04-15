@@ -1,0 +1,79 @@
+{{ header }}
+<div id="information-contact" class="container">
+  <ul class="breadcrumb">
+    {% for breadcrumb in breadcrumbs %}
+    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+    {% endfor %}
+  </ul>
+  <h1 class="page-title">
+    Контакты
+  </h1>
+  </div>
+  <div class="container">
+  <div class="row d-flex justify-content-center">
+      <div class="col-xl-8 col-lg-10">
+          <div class="form-block">
+              <div class="circle">
+                  <svg width="295" height="339" viewBox="0 0 295 339" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path opacity="0.2" fill-rule="evenodd" clip-rule="evenodd" d="M295 9.53117V324C295 332.284 288.284 339 280 339H28.7186C10.7571 306.33 0.540039 268.802 0.540039 228.887C0.540039 102.476 103.016 0 229.427 0C252.216 0 274.227 3.33045 295 9.53117Z" fill="#F1CECD"/>
+                  </svg>                        
+              </div>
+              <div class="points-1">
+                  <svg width="44" height="25" viewBox="0 0 44 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="5" cy="5" r="5" fill="#F1CECD"/>
+                      <circle cx="5" cy="20" r="5" fill="#F1CECD"/>
+                      <circle cx="22" cy="5" r="5" fill="#F1CECD"/>
+                      <circle cx="22" cy="20" r="5" fill="#F1CECD"/>
+                      <circle cx="39" cy="5" r="5" fill="#F1CECD"/>
+                      <circle cx="39" cy="20" r="5" fill="#F1CECD"/>
+                  </svg>                        
+              </div>
+              <div class="points-2">
+                  <svg width="44" height="25" viewBox="0 0 44 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="5" cy="5" r="5" fill="#F1CECD"/>
+                      <circle cx="5" cy="20" r="5" fill="#F1CECD"/>
+                      <circle cx="22" cy="5" r="5" fill="#F1CECD"/>
+                      <circle cx="22" cy="20" r="5" fill="#F1CECD"/>
+                      <circle cx="39" cy="5" r="5" fill="#F1CECD"/>
+                      <circle cx="39" cy="20" r="5" fill="#F1CECD"/>
+                  </svg>                        
+              </div>
+              <div class="form">
+                  <h2>Оставьте ваше сообщение</h2>
+                  <form>
+
+                      <!-- Hidden Required Fields -->
+                      <input type="hidden" name="project_name" value="Site Name">
+                      <input type="hidden" name="admin_email" value="admin@mail.com">
+                      <input type="hidden" name="form_subject" value="Form Subject">
+                      <!-- END Hidden Required Fields -->
+                      
+                      <span>Имя</span>
+                      <input type="text" name="Имя"  required><br>
+                      <span>E-mail</span>
+                      <input type="text" name="E-mail"  required><br>
+                      <span>Сообщение</span>
+                      <textarea name="Сообщение" cols="10" rows="5"></textarea>
+                      <button class="btn btn_accent btn_up">Отправить</button>
+          
+                  </form>
+              </div>
+              <div class="form-info">
+                  <div class="icon-text">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M15.4434 1.60742L12.3965 0.904297C12.0742 0.816406 11.7227 0.992188 11.5762 1.31445L10.1699 4.5957C10.0527 4.88867 10.1406 5.21094 10.375 5.41602L12.1621 6.88086C11.1074 9.10742 9.26172 10.9824 6.97656 12.0664L5.51172 10.2793C5.30664 10.0449 4.98438 9.95703 4.69141 10.0742L1.41016 11.4805C1.08789 11.627 0.941406 11.9785 1 12.3008L1.70312 15.3477C1.79102 15.6699 2.05469 15.875 2.40625 15.875C9.90625 15.875 16 9.81055 16 2.28125C16 1.95898 15.7656 1.69531 15.4434 1.60742Z" fill="#8E2216"/>
+                      </svg>
+                      <a href="#tel:89219360311">8(921) 936-03-11</a>                    
+                  </div>
+                  <div class="icon-text">
+                      <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M14.707 4.4707C14.0332 4.99805 13.1836 5.64258 10.1953 7.81055C9.60938 8.25 8.52539 9.2168 7.5 9.2168C6.44531 9.2168 5.39062 8.25 4.77539 7.81055C1.78711 5.64258 0.9375 4.99805 0.263672 4.4707C0.146484 4.38281 0 4.4707 0 4.61719V10.5938C0 11.3848 0.615234 12 1.40625 12H13.5938C14.3555 12 15 11.3848 15 10.5938V4.61719C15 4.4707 14.8242 4.38281 14.707 4.4707ZM7.5 8.25C8.17383 8.2793 9.14062 7.40039 9.63867 7.04883C13.5352 4.23633 13.8281 3.97266 14.707 3.26953C14.8828 3.15234 15 2.94727 15 2.71289V2.15625C15 1.39453 14.3555 0.75 13.5938 0.75H1.40625C0.615234 0.75 0 1.39453 0 2.15625V2.71289C0 2.94727 0.0878906 3.15234 0.263672 3.26953C1.14258 3.97266 1.43555 4.23633 5.33203 7.04883C5.83008 7.40039 6.79688 8.2793 7.5 8.25Z" fill="#8E2216"/>
+                      </svg>
+                      <a href="mailto:spb@plangui.com">spb@plangui.com</a>                    
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+{{ footer }}
