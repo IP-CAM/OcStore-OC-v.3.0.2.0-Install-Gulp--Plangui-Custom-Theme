@@ -36,8 +36,12 @@
     h1
         font-size: 35px
         font-weight: 500
-        margin-bottom: 12px
+        margin-bottom: 15px
+        margin-top: 0
+        text-align: left
+        text-transform: none
     p
+        margin-bottom: 20px
 
 .value-block
     display: flex
@@ -55,6 +59,7 @@
         margin: 0 15px
         border: 1px solid #ABABAB
         text-align: center
+        border-radius: inherit
     &_ctrl
         cursor: pointer
         font-size: 20px
@@ -65,10 +70,19 @@
     font-size: 12px
     text-transform: uppercase
     color: #ababab
-    margin-bottom: 5px
+    margin-bottom: 7px
     text-align: center
     &_left
         text-align: left
+
+.options .form-group .control-label 
+    display: none
+
+.options .form-group select 
+    width: 115px
+    height: 40px
+    border: 1px solid #ababab
+    font-size: 12px
 
 .select-block
     position: relative
@@ -98,6 +112,13 @@
     color: $accent
     font-size: 25px
     font-weight: 700
-    margin: 20px 0
     display: block
+    &__ul
+        margin: 20px 0 25px
+    &__low
+        color: $accent
+        font-size: 15px
+        font-weight: 400
+        margin: 5px 0
+        display: block
 

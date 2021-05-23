@@ -339,6 +339,7 @@ footer h5 {
 }
 /* breadcrumb */
 .breadcrumb {
+	display: none;
 	margin: 0 0 20px 0;
 	padding: 8px 0;
 	border: 1px solid #ddd;
@@ -591,9 +592,9 @@ footer h5 {
 .rating .fa-star + .fa-star-o {
 	color: #E69500;
 }
-h2.price {
+/* h2.price {
 	margin: 0;
-}
+} */
 .product-thumb .price {
 	color: #444;
 }

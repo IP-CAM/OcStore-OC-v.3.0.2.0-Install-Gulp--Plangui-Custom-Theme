@@ -15,7 +15,7 @@
     {% endif %}
     <div id="content" class="{{ class }}">{{ content_top }}
       <h1>{{ heading_title }}</h1>
-      {% if thumb or description %}
+      <!-- {% if thumb or description %}
       <div class="row"> {% if thumb %}
         <div class="col-sm-2"><img src="{{ thumb }}" alt="{{ heading_title }}" title="{{ heading_title }}" class="img-thumbnail" /></div>
         {% endif %}
@@ -48,8 +48,8 @@
         {% endfor %}</div>
       <br />
       {% endif %}
-      {% endif %}
-      {% if products %}
+      {% endif %} -->
+      <!-- {% if products %}
       <div class="row">
         <div class="col-md-2 col-sm-6 hidden-xs">
           <div class="btn-group btn-group-sm">
@@ -124,9 +124,19 @@
             </select>
           </div>
         </div>
-      </div>
+      </div> -->
       <div class="row"> {% for product in products %}
-        <div class="product-layout product-list col-xs-12">
+
+        <div class="col-lg-6 d-flex justify-content-center">
+          <div class="product-card">
+            <div class="image"><a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" /></a></div>
+            <h2><a href="{{ product.href }}">{{ product.name }}</a></h2>
+              <p>{{ product.description }}</p>
+              <a href="{{ product.href }}" class="product-card-more btn btn_accent">Подробнее</a>
+          </div>
+        </div>
+
+        <!-- <div class="product-layout product-list col-xs-12">
           <div class="product-thumb">
             <div class="image"><a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" /></a></div>
             <div>
@@ -151,8 +161,61 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
         {% endfor %} </div>
+
+
+        <div class="row">
+          <div class="col-lg-6 d-flex justify-content-center">
+              <div class="product-card">
+                <div class="image"><a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" /></a></div>
+                <h2><a href="{{ product.href }}">{{ product.name }}</a></h2>
+                  <p>{{ product.description }}</p>
+                  <a href="{{ product.href }}" class="product-card-more btn btn_accent">Подробнее</a>
+              </div>
+          </div>
+          <div class="col-lg-6 d-flex justify-content-center">
+              <div class="product-card">
+                  <img src="images/dist/product-2.png" alt="">
+                  <h2>Гортензия</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor in</p>
+                  <a href="#" class="product-card-more btn btn_accent">Подробнее</a>
+              </div>
+          </div>
+          <div class="col-lg-6 d-flex justify-content-center">
+              <div class="product-card">
+                  <img src="images/dist/product-3.png" alt="">
+                  <h2>Ирис беж</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor in</p>
+                  <a href="#" class="product-card-more btn btn_accent">Подробнее</a>
+              </div>
+          </div>
+          <div class="col-lg-6 d-flex justify-content-center">
+              <div class="product-card">
+                  <img src="images/dist/product-4.png" alt="">
+                  <h2>Карамболь</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor in</p>
+                  <a href="#" class="product-card-more btn btn_accent">Подробнее</a>
+              </div>
+          </div>
+          <div class="col-lg-6 d-flex justify-content-center">
+              <div class="product-card">
+                  <img src="images/dist/product-5.png" alt="">
+                  <h2>Роза марго</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor in</p>
+                  <a href="#" class="product-card-more btn btn_accent">Подробнее</a>
+              </div>
+          </div>
+          <div class="col-lg-6 d-flex justify-content-center">
+              <div class="product-card">
+                  <img src="images/dist/product-6.png" alt="">
+                  <h2>Русский фужер</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor in</p>
+                  <a href="#" class="product-card-more btn btn_accent">Подробнее</a>
+              </div>
+          </div>
+        </div>
+
       <div class="row">
         <div class="col-sm-6 text-left">{{ pagination }}</div>
         <div class="col-sm-6 text-right">{{ results }}</div>
