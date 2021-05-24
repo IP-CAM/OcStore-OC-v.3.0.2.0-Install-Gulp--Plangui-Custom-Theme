@@ -55,7 +55,7 @@
  
 	<div id="my-page">
 		<div id="my-header">
-			<nav id="my-menu">
+			<nav id="my-menu" style="display: none">
         <ul>
             <li><a href="/kolekciya-aromatov">Коллекция ароматов</a></li>
             <li><a href="/parfyumernye-svechi">Парф. свечи</a></li>
@@ -72,12 +72,12 @@
 						<div class="col-lg-6 col-12 d-flex justify-content-center">
 							<div class="logo">
 								<span>Perfumery</span>
-                <a href="{{ home }}"><img src="catalog/view/theme/plangui/image/logo.png" alt="plangui logo img-responsive"></a>
+                				<a href="{{ home }}"><img src="catalog/view/theme/plangui/image/logo.png" alt="plangui logo img-responsive"></a>
 								<span>St. Petesburg</span>
 							</div>
 						</div>
 						<div class="col-lg-3 col-12 d-flex justify-content-lg-end justify-content-center">
-							<div class="col-sm-3"></div>{{ cart }}</div>
+							{{ cart }}
 						</div>
 					</div>
 				</div>

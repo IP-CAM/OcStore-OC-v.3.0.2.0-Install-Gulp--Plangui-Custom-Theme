@@ -9,41 +9,51 @@
       {% endfor %}
     </ul>
       <div class="row">
-          <div class="col-lg-4 offset-lg-1"> 
-            {% if thumb or images %}
+          <div class="swiper-slider col-lg-4 offset-lg-1">
 
-				<div class="product-carousel-for">
-					{% if thumb %}
-					<div class="product-carousel-for_item">
-						<img src="{{ thumb }}" alt="{{ heading_title }}">
-					</div>
-					{% endif %}
-					{% if images %}
-					{% for image in images %}
-					<div class="product-carousel-for_item">
-						<img src="{{ image.thumb }}" alt="">
-					</div>
-					{% endfor %}
-					{% endif %}
-				</div>
+          	<!-- Slider main container -->
+          	<div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
+          		class="swiper-container mySwiper2">
+          		{% if thumb or images %}
+          		<div class="swiper-wrapper">
+          			{% if thumb %}
+          			<div class="swiper-slide">
+          				<img src="{{ thumb }}" alt="{{ heading_title }}">
+          			</div>
+          			{% endif %}
+          			{% if images %}
+          			{% for image in images %}
+          			<div class="swiper-slide">
+          				<img src="{{ image.thumb }}" alt="">
+          			</div>
+          			{% endfor %}
+          			{% endif %}
+          		</div>
+          		{% endif %}
 
-				<div class="product-carousel-nav">
-					{% if thumb %}
-					<div class="product-carousel-for_item">
-						<img src="{{ thumb }}" alt="{{ heading_title }}">
-					</div>
-					{% endif %}
-					{% if images %}
-					{% for image in images %}
-					<div class="product-carousel-for_item">
-						<img src="{{ image.thumb }}" alt="">
-					</div>
-					{% endfor %}
-					{% endif %}
-				</div>
+          		<div class="swiper-button-next"></div>
+          		<div class="swiper-button-prev"></div>
 
-			{% endif %}
+          	</div>
 
+          	<div thumbsSlider="" class="swiper-container mySwiper">
+          		{% if thumb or images %}
+          		<div class="swiper-wrapper">
+          			{% if thumb %}
+          			<div class="swiper-slide">
+          				<img src="{{ thumb }}" alt="{{ heading_title }}">
+          			</div>
+          			{% endif %}
+          			{% if images %}
+          			{% for image in images %}
+          			<div class="swiper-slide">
+          				<img src="{{ image.thumb }}" alt="">
+          			</div>
+          			{% endfor %}
+          			{% endif %}
+          		</div>
+          		{% endif %}
+          	</div>
           </div>
           <div class="col-lg-7">
               <div class="product-card-content">

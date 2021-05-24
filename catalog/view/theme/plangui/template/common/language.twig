@@ -1,9 +1,15 @@
 {% if languages|length > 1 %}
-  <ul class="lang">
-    {% for language in languages %}
-    <li>
-      <button type="button" name="{{ language.code }}">{{ language.name }}</button>
-    </li>
-    {% endfor %}
-  </ul>
+<div class="btn-group">
+  <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-language">
+    <ul class="lang">
+      {% for language in languages %}
+      <li>
+        <button class="btn btn-link btn-block language-select" type="button" name="{{ language.code }}"> {{ language.name }} </button>
+      </li>
+      {% endfor %}
+    </ul>
+    <input type="hidden" name="code" value="" />
+    <input type="hidden" name="redirect" value="{{ redirect }}" />
+  </form>
+</div>
 {% endif %}

@@ -13,6 +13,9 @@ header
                 border: none
                 background: none
                 transition: color .3s ease
+                font-size: inherit
+                color: inherit
+                width: auto
                 &:hover
                     color: $accent
 
@@ -43,6 +46,8 @@ header
             height: 50px
         .icon
             margin-right: 10px
+        &-link:hover
+            text-decoration: none
 
 .menu
     background-color: $pink
@@ -97,4 +102,5 @@ header
         .icon
             margin-right: 10px
             
-                
+.mm-menu_opened
+    display: flex !important
