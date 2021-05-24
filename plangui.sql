@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Май 24 2021 г., 10:21
+-- Время создания: Май 24 2021 г., 11:15
 -- Версия сервера: 8.0.19
 -- Версия PHP: 7.3.17
 
@@ -656,7 +656,7 @@ CREATE TABLE `oc_category` (
 INSERT INTO `oc_category` (`category_id`, `image`, `parent_id`, `top`, `column`, `sort_order`, `status`, `date_added`, `date_modified`, `noindex`) VALUES
 (27, '', 20, 0, 0, 2, 1, '2009-01-31 01:55:34', '2010-08-22 06:32:15', 1),
 (20, 'catalog/demo/compaq_presario.jpg', 0, 1, 1, 1, 1, '2009-01-05 21:49:43', '2021-05-24 02:59:19', 1),
-(18, 'catalog/demo/hp_2.jpg', 0, 1, 0, 2, 1, '2009-01-05 21:49:15', '2021-05-24 09:27:34', 1),
+(18, 'catalog/carousel-image-1 1.png', 0, 1, 0, 2, 1, '2009-01-05 21:49:15', '2021-05-24 11:10:43', 1),
 (26, '', 20, 0, 0, 1, 1, '2009-01-31 01:55:14', '2010-08-22 06:31:45', 1),
 (45, '', 18, 0, 0, 0, 1, '2010-09-24 18:29:16', '2011-04-26 08:52:11', 1),
 (46, '', 18, 0, 0, 0, 1, '2010-09-24 18:29:31', '2011-04-26 08:52:23', 1);
@@ -686,10 +686,10 @@ INSERT INTO `oc_category_description` (`category_id`, `language_id`, `name`, `de
 (27, 1, 'Mac', '', '', '', '', ''),
 (26, 1, 'PC', '', '', '', '', ''),
 (20, 2, 'Collection', '&lt;p&gt;Example of category description text&lt;br&gt;&lt;/p&gt;', '', '', '', ''),
+(18, 1, 'Парфюмерные свечи', '&lt;p&gt;\r\n	Shop Laptop feature only the best laptop deals on the market. By comparing laptop deals from the likes of PC World, Comet, Dixons, The Link and Carphone Warehouse, Shop Laptop has the most comprehensive selection of laptops on the internet. At Shop Laptop, we pride ourselves on offering customers the very best laptop deals. From refurbished laptops to netbooks, Shop Laptop ensures that every laptop - in every colour, style, size and technical spec - is featured on the site at the lowest possible price.&lt;/p&gt;\r\n', 'Парфюмерные свечи', '', '', ''),
 (45, 1, 'Windows', '', '', '', '', ''),
 (46, 1, 'Macs', '', '', '', '', ''),
 (20, 1, 'Коллекция ароматов', '&lt;p&gt;\r\n	Пример текста в описания категории&lt;/p&gt;\r\n', '', '', '', ''),
-(18, 1, 'Парфюмерные свечи', '&lt;p&gt;\r\n	Shop Laptop feature only the best laptop deals on the market. By comparing laptop deals from the likes of PC World, Comet, Dixons, The Link and Carphone Warehouse, Shop Laptop has the most comprehensive selection of laptops on the internet. At Shop Laptop, we pride ourselves on offering customers the very best laptop deals. From refurbished laptops to netbooks, Shop Laptop ensures that every laptop - in every colour, style, size and technical spec - is featured on the site at the lowest possible price.&lt;/p&gt;\r\n', 'Парфюмерные свечи', '', '', ''),
 (18, 2, 'perfume candles', '&lt;p&gt;Shop Laptop feature only the best laptop deals on the market. By \r\ncomparing laptop deals from the likes of PC World, Comet, Dixons, The \r\nLink and Carphone Warehouse, Shop Laptop has the most comprehensive \r\nselection of laptops on the internet. At Shop Laptop, we pride ourselves\r\n on offering customers the very best laptop deals. From refurbished \r\nlaptops to netbooks, Shop Laptop ensures that every laptop - in every \r\ncolour, style, size and technical spec - is featured on the site at the \r\nlowest possible price.&lt;br&gt;&lt;/p&gt;', '', '', '', ''),
 (46, 2, 'Macs', '', '', '', '', ''),
 (45, 2, 'Windows', '', '', '', '', ''),
@@ -2602,7 +2602,7 @@ CREATE TABLE `oc_product` (
 --
 
 INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `isbn`, `mpn`, `location`, `quantity`, `stock_status_id`, `image`, `manufacturer_id`, `shipping`, `price`, `points`, `tax_class_id`, `date_available`, `weight`, `weight_class_id`, `length`, `width`, `height`, `length_class_id`, `subtract`, `minimum`, `sort_order`, `status`, `viewed`, `date_added`, `date_modified`, `noindex`) VALUES
-(52, 'iris-beige', '', '', '', '', '', '', '', 1000, 7, 'catalog/iris-biege.png', 0, 1, '5000.0000', 0, 0, '2021-05-24', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 0, '2021-05-24 10:18:03', '2021-05-24 10:20:24', 1),
+(52, 'iris-beige', '', '', '', '', '', '', '', 1000, 7, 'catalog/iris-biege.png', 0, 1, '5000.0000', 0, 0, '2021-05-24', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 1, '2021-05-24 10:18:03', '2021-05-24 10:20:24', 1),
 (51, 'hortensia', '', '', '', '', '', '', '', 1000, 7, 'catalog/hortensia.png', 0, 1, '5000.0000', 0, 0, '2021-05-24', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 1, '2021-05-24 10:13:31', '2021-05-24 10:17:13', 1),
 (50, 'white-night', '', '', '', '', '', '', '', 1000, 7, 'catalog/white-night.png', 0, 1, '5000.0000', 0, 0, '2021-05-24', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 13, '2021-05-24 09:43:24', '2021-05-24 10:12:58', 1);
 
@@ -2835,10 +2835,7 @@ CREATE TABLE `oc_product_related_wb` (
 INSERT INTO `oc_product_related_wb` (`product_id`, `category_id`) VALUES
 (33, 20),
 (41, 26),
-(41, 27),
-(45, 18),
-(44, 18),
-(43, 18);
+(41, 27);
 
 -- --------------------------------------------------------
 
@@ -3155,7 +3152,7 @@ INSERT INTO `oc_seo_url` (`seo_url_id`, `store_id`, `language_id`, `query`, `key
 (858, 0, 1, 'category_id=26', 'pc'),
 (860, 0, 1, 'category_id=27', 'mac'),
 (932, 0, 1, 'manufacturer_id=8', 'apple'),
-(1021, 0, 2, 'category_id=18', 'perfume-candles'),
+(1049, 0, 2, 'category_id=18', 'perfume-candles'),
 (864, 0, 1, 'category_id=46', 'macs'),
 (866, 0, 1, 'category_id=45', 'windows'),
 (1046, 0, 1, 'product_id=52', 'Parfyum-Iris-bezh-Plangui'),
@@ -3177,7 +3174,7 @@ INSERT INTO `oc_seo_url` (`seo_url_id`, `store_id`, `language_id`, `query`, `key
 (1008, 0, 1, 'category_id=20', 'kolekciya-aromatov'),
 (859, 0, 2, 'category_id=26', 'en_pc'),
 (861, 0, 2, 'category_id=27', 'en_mac'),
-(1020, 0, 1, 'category_id=18', 'parfyumernye-svechi'),
+(1048, 0, 1, 'category_id=18', 'parfyumernye-svechi'),
 (865, 0, 2, 'category_id=46', 'en_macs'),
 (867, 0, 2, 'category_id=45', 'en_windows'),
 (1047, 0, 2, 'product_id=52', 'Perfume-Iris-beige-Plangui'),
@@ -3225,8 +3222,8 @@ INSERT INTO `oc_session` (`session_id`, `data`, `expire`) VALUES
 ('54e6fd4cd23c6eb4b5b51b0511', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2021-04-15 00:11:40'),
 ('6d6e330c275d580f8460ddad4b', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2021-05-23 14:52:50'),
 ('8551a0ee5cf2cc8879743aaa0d', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2021-05-23 14:49:25'),
-('c2538e0bcc7cde1cb1364c984c', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"user_id\":\"1\",\"user_token\":\"dHJMW8JSlkQ0rqwhG4rgFUGRD75EMBAs\"}', '2021-05-24 08:21:19'),
-('d4ad9c787c68637d8eaf26ece3', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2021-05-24 08:02:19'),
+('c2538e0bcc7cde1cb1364c984c', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"user_id\":\"1\",\"user_token\":\"dHJMW8JSlkQ0rqwhG4rgFUGRD75EMBAs\"}', '2021-05-24 09:14:58'),
+('d4ad9c787c68637d8eaf26ece3', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2021-05-24 08:37:26'),
 ('ee0783b3d8bd68c49a6db36c46', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2021-04-17 18:53:37'),
 ('f96ca8b1dd74dfd089c4544e8d', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"user_id\":\"1\",\"user_token\":\"cAvS5W3AR4k5xhbvXvF0dbYcsbj7qv4j\"}', '2021-05-08 02:11:41'),
 ('fabdecc05194b01418809b290f', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2021-04-14 15:33:57');
@@ -9517,7 +9514,7 @@ ALTER TABLE `oc_review_article`
 -- AUTO_INCREMENT для таблицы `oc_seo_url`
 --
 ALTER TABLE `oc_seo_url`
-  MODIFY `seo_url_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1048;
+  MODIFY `seo_url_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1050;
 
 --
 -- AUTO_INCREMENT для таблицы `oc_setting`
