@@ -16,3 +16,7 @@ $_['text_download']      = 'Файлы для скачивания';
 $_['text_logout']        = 'Выход';
 $_['text_checkout']      = 'Оформление заказа';
 $_['text_search']        = 'Поиск';
+$_['text_menu_item1']    = 'Коллекция ароматов';
+$_['text_menu_item2']    = 'Парф. свечи';
+$_['text_menu_item3']    = 'Автор-парфюмер';
+$_['text_menu_item4']    = 'События';

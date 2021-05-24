@@ -14,3 +14,7 @@ $_['text_logout']        = 'Logout';
 $_['text_checkout']      = 'Checkout';
 $_['text_search']        = 'Search';
 $_['text_all']           = 'Show All';
+$_['text_menu_item1']    = 'Collection';
+$_['text_menu_item2']    = 'Candles';
+$_['text_menu_item3']    = 'Author-perfumer';
+$_['text_menu_item4']    = 'Events';

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Май 24 2021 г., 17:52
+-- Время создания: Май 25 2021 г., 02:49
 -- Версия сервера: 8.0.19
 -- Версия PHP: 7.3.17
 
@@ -119,7 +119,7 @@ CREATE TABLE `oc_article` (
 
 INSERT INTO `oc_article` (`article_id`, `image`, `date_available`, `sort_order`, `article_review`, `status`, `noindex`, `date_added`, `date_modified`, `viewed`, `gstatus`) VALUES
 (125, 'catalog/image 2.png', '0000-00-00', 1, 0, 1, 1, '2015-06-29 09:09:03', '2021-05-24 02:48:30', 23, 0),
-(126, 'catalog/image 2.png', '0000-00-00', 2, 0, 1, 1, '2021-05-24 02:50:58', '2021-05-24 02:52:32', 2, 0);
+(126, 'catalog/image 2.png', '0000-00-00', 2, 0, 1, 1, '2021-05-24 02:50:58', '2021-05-24 02:52:32', 3, 0);
 
 -- --------------------------------------------------------
 
@@ -629,6 +629,13 @@ CREATE TABLE `oc_cart` (
   `quantity` int NOT NULL,
   `date_added` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `oc_cart`
+--
+
+INSERT INTO `oc_cart` (`cart_id`, `api_id`, `customer_id`, `session_id`, `product_id`, `recurring_id`, `option`, `quantity`, `date_added`) VALUES
+(16, 0, 0, 'c2538e0bcc7cde1cb1364c984c', 50, 0, '{\"228\":\"20\"}', 1, '2021-05-25 01:53:31');
 
 -- --------------------------------------------------------
 
@@ -2616,9 +2623,9 @@ CREATE TABLE `oc_product` (
 --
 
 INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `isbn`, `mpn`, `location`, `quantity`, `stock_status_id`, `image`, `manufacturer_id`, `shipping`, `price`, `points`, `tax_class_id`, `date_available`, `weight`, `weight_class_id`, `length`, `width`, `height`, `length_class_id`, `subtract`, `minimum`, `sort_order`, `status`, `viewed`, `date_added`, `date_modified`, `noindex`) VALUES
-(52, 'iris-beige', '', '', '', '', '', '', '', 1000, 7, 'catalog/iris-biege.png', 0, 1, '5000.0000', 0, 0, '2021-05-24', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 61, '2021-05-24 10:18:03', '2021-05-24 16:41:43', 1),
+(52, 'iris-beige', '', '', '', '', '', '', '', 1000, 7, 'catalog/iris-biege.png', 0, 1, '5000.0000', 0, 0, '2021-05-24', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 97, '2021-05-24 10:18:03', '2021-05-24 16:41:43', 1),
 (51, 'hortensia', '', '', '', '', '', '', '', 1000, 7, 'catalog/hortensia.png', 0, 1, '5000.0000', 0, 0, '2021-05-24', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 1, '2021-05-24 10:13:31', '2021-05-24 10:17:13', 1),
-(50, 'white-night', '', '', '', '', '', '', '', 1000, 7, 'catalog/white-night.png', 0, 1, '5000.0000', 0, 0, '2021-05-24', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 28, '2021-05-24 09:43:24', '2021-05-24 16:34:55', 1);
+(50, 'white-night', '', '', '', '', '', '', '', 1000, 7, 'catalog/white-night.png', 0, 1, '5000.0000', 0, 0, '2021-05-24', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 121, '2021-05-24 09:43:24', '2021-05-24 16:34:55', 1);
 
 -- --------------------------------------------------------
 
@@ -3236,8 +3243,8 @@ INSERT INTO `oc_session` (`session_id`, `data`, `expire`) VALUES
 ('54e6fd4cd23c6eb4b5b51b0511', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2021-04-15 00:11:40'),
 ('6d6e330c275d580f8460ddad4b', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2021-05-23 14:52:50'),
 ('8551a0ee5cf2cc8879743aaa0d', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2021-05-23 14:49:25'),
-('c2538e0bcc7cde1cb1364c984c', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"user_id\":\"1\",\"user_token\":\"dHJMW8JSlkQ0rqwhG4rgFUGRD75EMBAs\",\"install\":\"6lcyYI3u2n\"}', '2021-05-24 15:47:56'),
-('d4ad9c787c68637d8eaf26ece3', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2021-05-24 10:13:11'),
+('c2538e0bcc7cde1cb1364c984c', '{\"language\":\"en-gb\",\"currency\":\"RUB\",\"user_id\":\"1\",\"user_token\":\"dHJMW8JSlkQ0rqwhG4rgFUGRD75EMBAs\",\"install\":\"6lcyYI3u2n\"}', '2021-05-25 00:47:51'),
+('d4ad9c787c68637d8eaf26ece3', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2021-05-25 00:16:01'),
 ('ee0783b3d8bd68c49a6db36c46', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2021-04-17 18:53:37'),
 ('f96ca8b1dd74dfd089c4544e8d', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"user_id\":\"1\",\"user_token\":\"cAvS5W3AR4k5xhbvXvF0dbYcsbj7qv4j\"}', '2021-05-08 02:11:41'),
 ('fabdecc05194b01418809b290f', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2021-04-14 15:33:57');
@@ -3338,27 +3345,26 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (122, 0, 'total_coupon', 'total_coupon_status', '1', 0),
 (123, 0, 'module_category', 'module_category_status', '1', 0),
 (124, 0, 'module_account', 'module_account_status', '1', 0),
-(740, 0, 'theme_default', 'theme_default_image_cart_height', '47', 0),
-(741, 0, 'theme_default', 'theme_default_image_location_width', '268', 0),
-(738, 0, 'theme_default', 'theme_default_image_wishlist_height', '47', 0),
-(739, 0, 'theme_default', 'theme_default_image_cart_width', '47', 0),
-(737, 0, 'theme_default', 'theme_default_image_wishlist_width', '47', 0),
-(736, 0, 'theme_default', 'theme_default_image_compare_height', '90', 0),
-(735, 0, 'theme_default', 'theme_default_image_compare_width', '90', 0),
-(734, 0, 'theme_default', 'theme_default_image_related_height', '200', 0),
-(733, 0, 'theme_default', 'theme_default_image_related_width', '200', 0),
-(732, 0, 'theme_default', 'theme_default_image_additional_height', '228', 0),
-(731, 0, 'theme_default', 'theme_default_image_additional_width', '228', 0),
-(730, 0, 'theme_default', 'theme_default_image_product_height', '228', 0),
-(729, 0, 'theme_default', 'theme_default_image_product_width', '228', 0),
-(727, 0, 'theme_default', 'theme_default_image_popup_width', '500', 0),
-(728, 0, 'theme_default', 'theme_default_image_popup_height', '500', 0),
-(726, 0, 'theme_default', 'theme_default_image_thumb_height', '228', 0),
-(725, 0, 'theme_default', 'theme_default_image_thumb_width', '228', 0),
-(724, 0, 'theme_default', 'theme_default_image_manufacturer_height', '80', 0),
-(723, 0, 'theme_default', 'theme_default_image_manufacturer_width', '80', 0),
-(722, 0, 'theme_default', 'theme_default_image_category_height', '80', 0),
-(721, 0, 'theme_default', 'theme_default_image_category_width', '80', 0),
+(1091, 0, 'theme_default', 'theme_default_image_cart_width', '47', 0),
+(1092, 0, 'theme_default', 'theme_default_image_cart_height', '47', 0),
+(1093, 0, 'theme_default', 'theme_default_image_location_width', '268', 0),
+(1094, 0, 'theme_default', 'theme_default_image_location_height', '50', 0),
+(1090, 0, 'theme_default', 'theme_default_image_wishlist_height', '47', 0),
+(1089, 0, 'theme_default', 'theme_default_image_wishlist_width', '47', 0),
+(1088, 0, 'theme_default', 'theme_default_image_compare_height', '90', 0),
+(1085, 0, 'theme_default', 'theme_default_image_related_width', '200', 0),
+(1086, 0, 'theme_default', 'theme_default_image_related_height', '200', 0),
+(1087, 0, 'theme_default', 'theme_default_image_compare_width', '90', 0),
+(1084, 0, 'theme_default', 'theme_default_image_additional_height', '350', 0),
+(1082, 0, 'theme_default', 'theme_default_image_product_height', '228', 0),
+(1083, 0, 'theme_default', 'theme_default_image_additional_width', '350', 0),
+(1081, 0, 'theme_default', 'theme_default_image_product_width', '228', 0),
+(1080, 0, 'theme_default', 'theme_default_image_popup_height', '500', 0),
+(1079, 0, 'theme_default', 'theme_default_image_popup_width', '500', 0),
+(1078, 0, 'theme_default', 'theme_default_image_thumb_height', '350', 0),
+(1077, 0, 'theme_default', 'theme_default_image_thumb_width', '350', 0),
+(1076, 0, 'theme_default', 'theme_default_image_manufacturer_height', '80', 0),
+(1075, 0, 'theme_default', 'theme_default_image_manufacturer_width', '80', 0),
 (151, 0, 'dashboard_activity', 'dashboard_activity_status', '1', 0),
 (152, 0, 'dashboard_activity', 'dashboard_activity_sort_order', '7', 0),
 (153, 0, 'dashboard_sale', 'dashboard_sale_status', '1', 0),
@@ -3410,7 +3416,7 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (199, 0, 'report_marketing', 'report_marketing_status', '1', 0),
 (200, 0, 'report_marketing', 'report_marketing_sort_order', '12', 0),
 (636, 0, 'developer', 'developer_sass', '0', 0),
-(742, 0, 'theme_default', 'theme_default_image_location_height', '50', 0),
+(1072, 0, 'theme_default', 'theme_default_product_description_length', '100', 0),
 (715, 0, 'configblog', 'configblog_image_related_width', '450', 0),
 (716, 0, 'configblog', 'configblog_image_related_height', '450', 0),
 (714, 0, 'configblog', 'configblog_image_article_height', '370', 0),
@@ -3445,10 +3451,11 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (984, 0, 'config', 'config_customer_group_id', '1', 0),
 (983, 0, 'config', 'config_customer_search', '0', 0),
 (982, 0, 'config', 'config_customer_activity', '0', 0),
-(720, 0, 'theme_default', 'theme_default_product_description_length', '100', 0),
-(719, 0, 'theme_default', 'theme_default_product_limit', '15', 0),
-(718, 0, 'theme_default', 'theme_default_status', '1', 0),
-(717, 0, 'theme_default', 'theme_default_directory', 'plangui', 0),
+(1074, 0, 'theme_default', 'theme_default_image_category_height', '80', 0),
+(1073, 0, 'theme_default', 'theme_default_image_category_width', '80', 0),
+(1071, 0, 'theme_default', 'theme_default_product_limit', '15', 0),
+(1070, 0, 'theme_default', 'theme_default_status', '1', 0),
+(1069, 0, 'theme_default', 'theme_default_directory', 'plangui', 0),
 (635, 0, 'developer', 'developer_theme', '0', 0),
 (981, 0, 'config', 'config_customer_online', '0', 0),
 (980, 0, 'config', 'config_tax_customer', 'shipping', 0),
@@ -9144,7 +9151,7 @@ ALTER TABLE `oc_blog_category`
 -- AUTO_INCREMENT для таблицы `oc_cart`
 --
 ALTER TABLE `oc_cart`
-  MODIFY `cart_id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `cart_id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT для таблицы `oc_category`
@@ -9540,7 +9547,7 @@ ALTER TABLE `oc_seo_url`
 -- AUTO_INCREMENT для таблицы `oc_setting`
 --
 ALTER TABLE `oc_setting`
-  MODIFY `setting_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1043;
+  MODIFY `setting_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1095;
 
 --
 -- AUTO_INCREMENT для таблицы `oc_statistics`
