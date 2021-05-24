@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Май 24 2021 г., 11:15
+-- Время создания: Май 24 2021 г., 17:52
 -- Версия сервера: 8.0.19
 -- Версия PHP: 7.3.17
 
@@ -1146,7 +1146,7 @@ CREATE TABLE `oc_currency` (
 --
 
 INSERT INTO `oc_currency` (`currency_id`, `title`, `code`, `symbol_left`, `symbol_right`, `decimal_place`, `value`, `status`, `date_modified`) VALUES
-(1, 'Рубль', 'RUB', '', 'р.', '2', 1.00000000, 1, '2021-05-23 14:39:38'),
+(1, 'Рубль', 'RUB', '', 'р.', '2', 1.00000000, 1, '2021-05-24 13:38:59'),
 (2, 'US Dollar', 'USD', '$', '', '2', 0.01697793, 1, '2017-07-19 21:28:21'),
 (3, 'Euro', 'EUR', '', '€', '2', 0.01476363, 1, '2017-07-19 21:28:21'),
 (4, 'Гривна', 'UAH', '', 'грн.', '2', 0.44016022, 1, '2017-07-19 21:28:21');
@@ -1612,6 +1612,13 @@ CREATE TABLE `oc_extension_install` (
   `filename` varchar(255) NOT NULL,
   `date_added` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `oc_extension_install`
+--
+
+INSERT INTO `oc_extension_install` (`extension_install_id`, `extension_download_id`, `filename`, `date_added`) VALUES
+(1, 0, 'autocalc_price_option_oc3_v4.1.8.ocmod.zip', '2021-05-24 16:30:37');
 
 -- --------------------------------------------------------
 
@@ -2116,6 +2123,13 @@ CREATE TABLE `oc_modification` (
   `date_added` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Дамп данных таблицы `oc_modification`
+--
+
+INSERT INTO `oc_modification` (`modification_id`, `extension_install_id`, `name`, `code`, `author`, `version`, `link`, `xml`, `status`, `date_added`) VALUES
+(1, 1, 'DEV-OPENCART.COM - Обновление цены при выборе опций', 'dev_opencart_com_autocalc_price_opencart', 'DEV-OPENCART.COM', '1', 'https://dev-opencart.com', '<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<modification>\n  <name>DEV-OPENCART.COM - Обновление цены при выборе опций</name>\n  <version>1</version>\n  <link>https://dev-opencart.com</link>\n  <author>DEV-OPENCART.COM</author>\n  <code>dev_opencart_com_autocalc_price_opencart</code>\n  <file path=\"admin/view/template/setting/setting.twig\">\n    <operation error=\"skip\">                           \n      <search><![CDATA[<label class=\"col-sm-2 control-label\"><span data-toggle=\"tooltip\" title=\"{{ help_currency_auto }}\">{{ entry_currency_auto }}</span></label>]]></search>\n      <add position=\"before\"><![CDATA[\n          <label class=\"col-sm-2 control-label\"><span data-toggle=\"tooltip\" title=\"Выводится модулем autocalc_price_option в карточке товара\">Дополнительная валюта <i>(autocalc)</i>:</span></label>\n          <div class=\"col-sm-10\">\n            <select name=\"config_currency2\" id=\"input-currency\" class=\"form-control\">\n              <option value=\"\">{{ text_none }}</option>\n              {% for currency in currencies %}\n                {% if currency.code == config_currency2 %}\n                  <option value=\"{{ currency.code }}\" selected=\"selected\">{{ currency.title }}</option>\n                {% else %}\n                  <option value=\"{{ currency.code }}\">{{ currency.title }}</option>\n                {% endif %}\n              {% endfor %}\n            </select>\n          </div>\n        </div>\n        <div class=\"form-group\">\n          <label class=\"col-sm-2 control-label\"><span data-toggle=\"tooltip\" title=\"Акция на опции пропорционально акции на товар (autocalc_price_option)\">Акция на опции <i>(autocalc)</i>:</span></label>\n          <div class=\"col-sm-10\">\n            <label class=\"radio-inline\"> \n              {% if config_autocalc_option_special %}\n              <input type=\"radio\" name=\"config_autocalc_option_special\" value=\"1\" checked=\"checked\" />\n              {{ text_yes }}\n              {% else %}\n              <input type=\"radio\" name=\"config_autocalc_option_special\" value=\"1\" />\n              {{ text_yes }}\n              {% endif %}\n            </label>\n            <label class=\"radio-inline\">\n              {% if not config_autocalc_option_special %}\n              <input type=\"radio\" name=\"config_autocalc_option_special\" value=\"0\" checked=\"checked\" />\n              {{ text_no }}\n              {% else %}\n              <input type=\"radio\" name=\"config_autocalc_option_special\" value=\"0\" />\n              {{ text_no }}\n              {% endif %}\n            </label>\n          </div>\n        </div>\n        <div class=\"form-group\">\n          <label class=\"col-sm-2 control-label\"><span data-toggle=\"tooltip\" title=\"Скидка на опции пропорционально скидке на товар (autocalc_price_option)\">Скидка на опции <i>(autocalc)</i>:</span></label>\n          <div class=\"col-sm-10\">\n            <label class=\"radio-inline\">\n              {% if config_autocalc_option_discount %}\n              <input type=\"radio\" name=\"config_autocalc_option_discount\" value=\"1\" checked=\"checked\" />\n              {{ text_yes }}\n              {% else %}\n              <input type=\"radio\" name=\"config_autocalc_option_discount\" value=\"1\" />\n              {{ text_yes }}\n              {% endif %}\n            </label>\n            <label class=\"radio-inline\">\n              {% if not config_autocalc_option_discount %}\n              <input type=\"radio\" name=\"config_autocalc_option_discount\" value=\"0\" checked=\"checked\" />\n              {{ text_no }}\n              {% else %}\n              <input type=\"radio\" name=\"config_autocalc_option_discount\" value=\"0\" />\n              {{ text_no }}\n              {% endif %}\n            </label>\n          </div>\n        </div>\n        <div class=\"form-group\">\n          <label class=\"col-sm-2 control-label\"><span data-toggle=\"tooltip\" title=\"Отключении функции умножения на количество (autocalc_price_option)\">Не умножать на количество <i>(autocalc)</i>:</span></label>\n          <div class=\"col-sm-10\">\n            <label class=\"radio-inline\">\n              {% if config_autocalc_not_mul_qty %}\n              <input type=\"radio\" name=\"config_autocalc_not_mul_qty\" value=\"1\" checked=\"checked\" />\n              {{ text_yes }}\n              {% else %}\n              <input type=\"radio\" name=\"config_autocalc_not_mul_qty\" value=\"1\" />\n              {{ text_yes }}\n              {% endif %} </label>\n            <label class=\"radio-inline\">\n              {% if not config_autocalc_not_mul_qty %}\n              <input type=\"radio\" name=\"config_autocalc_not_mul_qty\" value=\"0\" checked=\"checked\" />\n              {{ text_no }}\n              {% else %}\n              <input type=\"radio\" name=\"config_autocalc_not_mul_qty\" value=\"0\" />\n              {{ text_no }}\n              {% endif %}\n            </label>\n          </div>\n        </div>\n        <div class=\"form-group\">\n          <label class=\"col-sm-2 control-label\"><span data-toggle=\"tooltip\" title=\"Автоматический выбор первой опции (radio,select). (autocalc_price_option)\">Выбор первой опции <i>(autocalc)</i>:</span></label>\n          <div class=\"col-sm-10\">\n            <label class=\"radio-inline\">\n              {% if config_autocalc_select_first %}\n              <input type=\"radio\" name=\"config_autocalc_select_first\" value=\"1\" checked=\"checked\" />\n              {{ text_yes }}\n              {% else %}\n              <input type=\"radio\" name=\"config_autocalc_select_first\" value=\"1\" />\n              {{ text_yes }}\n              {% endif %}\n            </label>\n            <label class=\"radio-inline\">\n              {% if not config_autocalc_select_first %}\n              <input type=\"radio\" name=\"config_autocalc_select_first\" value=\"0\" checked=\"checked\" />\n              {{ text_no }}\n              {% else %}\n              <input type=\"radio\" name=\"config_autocalc_select_first\" value=\"0\" />\n              {{ text_no }}\n              {% endif %}\n            </label>\n          </div>\n        </div>\n        <div class=\"form-group\">\n          <label class=\"col-sm-2 control-label\"><span data-toggle=\"tooltip\" title=\"Скрыть вывод наценки для опции. (autocalc_price_option)\">Не показывать цену опции <i>(autocalc)</i>:</span></label>\n          <div class=\"col-sm-10\">\n            <label class=\"radio-inline\">\n              {% if config_autocalc_hide_option_price %}\n              <input type=\"radio\" name=\"config_autocalc_hide_option_price\" value=\"1\" checked=\"checked\" />\n              {{ text_yes }}\n              {% else %}\n              <input type=\"radio\" name=\"config_autocalc_hide_option_price\" value=\"1\" />\n              {{ text_yes }}\n              {% endif %}\n            </label>\n            <label class=\"radio-inline\">\n              {% if not config_autocalc_hide_option_price %}\n              <input type=\"radio\" name=\"config_autocalc_hide_option_price\" value=\"0\" checked=\"checked\" />\n              {{ text_no }}\n              {% else %}\n              <input type=\"radio\" name=\"config_autocalc_hide_option_price\" value=\"0\" />\n              {{ text_no }}\n              {% endif %}\n            </label>\n          </div>\n        </div>\n        <div class=\"form-group\">\n      ]]></add>\n    </operation>        \n  </file>  \n  <file path=\"admin/controller/setting/setting.php\">\n    <operation>                           \n      <search><![CDATA[if (isset($this->request->post[\'config_currency\'])) {]]></search>\n      <add position=\"before\"><![CDATA[\n        if (isset($this->request->post[\'config_currency2\'])) {\n            $data[\'config_currency2\'] = $this->request->post[\'config_currency2\'];\n        } else {\n            $data[\'config_currency2\'] = $this->config->get(\'config_currency2\');\n        }\n        if (isset($this->request->post[\'config_autocalc_option_special\'])) {\n            $data[\'config_autocalc_option_special\'] = $this->request->post[\'config_autocalc_option_special\'];\n        } else {\n            $data[\'config_autocalc_option_special\'] = $this->config->get(\'config_autocalc_option_special\');\n        }        \n        if (isset($this->request->post[\'config_autocalc_option_discount\'])) {\n            $data[\'config_autocalc_option_discount\'] = $this->request->post[\'config_autocalc_option_discount\'];\n        } else {\n            $data[\'config_autocalc_option_discount\'] = $this->config->get(\'config_autocalc_option_discount\');\n        }\n        if (isset($this->request->post[\'config_autocalc_not_mul_qty\'])) {\n            $data[\'config_autocalc_not_mul_qty\'] = $this->request->post[\'config_autocalc_not_mul_qty\'];\n        } else {\n            $data[\'config_autocalc_not_mul_qty\'] = $this->config->get(\'config_autocalc_not_mul_qty\');\n        }\n        if (isset($this->request->post[\'config_autocalc_select_first\'])) {\n            $data[\'config_autocalc_select_first\'] = $this->request->post[\'config_autocalc_select_first\'];\n        } else {\n            $data[\'config_autocalc_select_first\'] = $this->config->get(\'config_autocalc_select_first\');\n        }        \n        if (isset($this->request->post[\'config_autocalc_hide_option_price\'])) {\n            $data[\'config_autocalc_hide_option_price\'] = $this->request->post[\'config_autocalc_hide_option_price\'];\n        } else {\n            $data[\'config_autocalc_hide_option_price\'] = $this->config->get(\'config_autocalc_hide_option_price\');\n        }\n      ]]></add>\n    </operation>        \n  </file>\n  \n  \n  <file path=\"admin/view/template/catalog/product_form.twig\">\n    <operation error=\"skip\">                           \n      <search><![CDATA[{% if product_option_value.price_prefix == \'+\' %}]]></search>\n      <add position=\"before\"><![CDATA[\n        {% if product_option_value.price_prefix == \'=\' %}\n          <option value=\"=\" selected=\"selected\">=</option>\n        {% else %}\n          <option value=\"=\">=</option>\n        {% endif %}\n        {% if product_option_value.price_prefix == \'%\' %}\n          <option value=\"%\" selected=\"selected\">%</option>\n        {% else %}\n          <option value=\"%\">%</option>\n        {% endif %}\n        {% if product_option_value.price_prefix == \'*\' %}\n          <option value=\"*\" selected=\"selected\">*</option>\n        {% else %}\n          <option value=\"*\">*</option>\n        {% endif %}\n        {% if product_option_value.price_prefix == \'/\' %}\n          <option value=\"/\" selected=\"selected\">/</option>\n        {% else %}\n          <option value=\"/\">/</option>\n        {% endif %}\n      ]]></add>\n    </operation>    \n    <operation error=\"skip\">                           \n      <search index=\"0\"><![CDATA[html += \'    <option value=\"-\">-</option>\';]]></search>\n      <add position=\"after\"><![CDATA[\n        html += \'    <option value=\"=\">=</option>\';\n        html += \'    <option value=\"%\">%</option>\';\n        html += \'    <option value=\"*\">*</option>\';\n        html += \'    <option value=\"/\">/</option>\';\n      ]]></add>\n    </operation>\n  </file>\n  \n  \n  <file path=\"system/library/cart/cart.php\">    \n    <operation>\n      <search><![CDATA[if ($product_discount_query->num_rows) {]]></search>\n      <add position=\"after\"><![CDATA[\n        if ((float)$product_discount_query->row[\'price\'] && (float)$product_query->row[\'price\'] && $this->config->get(\'config_autocalc_option_discount\')) {\n            $autocalc_discount_coefficient = (float)$product_discount_query->row[\'price\'] / (float)$product_query->row[\'price\'];\n            $option_price *= $autocalc_discount_coefficient;\n        }\n      ]]></add>\n    </operation>\n    <operation>\n      <search><![CDATA[if ($product_special_query->num_rows) {]]></search>\n      <add position=\"after\"><![CDATA[\n        if ((float)$product_special_query->row[\'price\'] && (float)$product_query->row[\'price\'] &&  $this->config->get(\'config_autocalc_option_special\')) {\n            $autocalc_special_coefficient = (float)$product_special_query->row[\'price\'] / (float)$product_query->row[\'price\'];\n            $option_price *= $autocalc_special_coefficient;\n        }\n      ]]></add>\n    </operation>\n    <operation>\n      <search><![CDATA[if ($product_query->num_rows && ($cart[\'quantity\'] > 0)) {]]></search>\n      <add position=\"after\"><![CDATA[\n        $autocalc_override_price = false;\n        $autocalc_discount_coefficient = false;\n        $autocalc_special_coefficient = false;\n        $autocalc_option_prices = array();\n      ]]></add>\n    </operation>    \n    <operation>\n      <search><![CDATA[if ($option_value_query->row[\'price_prefix\'] == \'+\') {]]></search>\n      <add position=\"replace\"><![CDATA[\n        if (true) {\n            if ($option_value_query->row[\'price_prefix\'] == \'=\') {\n                $autocalc_override_price += $option_value_query->row[\'price\'];\n            } else {\n                $autocalc_option_prices[] = array(\'prefix\' => $option_value_query->row[\'price_prefix\'], \'value\' => $option_value_query->row[\'price\']);\n            }\n        } else \n        if ($option_value_query->row[\'price_prefix\'] == \'+\') {]]></add>\n    </operation>\n    <operation>\n      <search><![CDATA[$recurring_query = $this->db->query(\"SELECT]]></search>\n      <add position=\"before\"><![CDATA[\n        $option_price = 0;\n        if ($autocalc_override_price !== false) {\n            $price = 0;\n            $option_price = $autocalc_override_price;\n        }\n        foreach ($autocalc_option_prices as $op) {\n            switch ($op[\'prefix\']) {\n                case \'+\':\n                    $option_price += $op[\'value\'];\n                    break;\n                case \'-\':\n                    $option_price -= $op[\'value\'];\n                    break;\n                case \'*\':\n                    $price *= $op[\'value\'];\n                    $option_price *= $op[\'value\'];\n                    break;\n                case \'/\':\n                    $price /= $op[\'value\'];\n                    $option_price /= $op[\'value\'];\n                    break;\n                case \'%\':\n                    $price *= 1.0 + $op[\'value\'] / 100.0;\n                    $option_price *= 1.0 + $op[\'value\'] / 100.0;\n                    break;\n            }\n        }\n        if ($autocalc_discount_coefficient !== false) {\n            $option_price *= $autocalc_discount_coefficient;\n        }\n        if ($autocalc_special_coefficient !== false) {\n            $option_price *= $autocalc_special_coefficient;\n        }\n      ]]></add>\n    </operation>\n  </file>\n\n\n  <file path=\"catalog/model/catalog/product.php\">\n    <operation>\n      <search><![CDATA[=> $product_option_value[\'weight\'],]]></search>\n      <add position=\"before\"><![CDATA[\n        \'points\'        => $product_option_value[\'points\'],\n        \'points_prefix\' => $product_option_value[\'points_prefix\'],\n      ]]></add>\n    </operation>\n  </file>\n  \n  <file path=\"catalog/controller/product/product.php\">\n    <operation>\n      <search><![CDATA[$data[\'options\'] = array();]]></search>\n      <add position=\"before\"><![CDATA[\n        if ($data[\'price\']) {\n            $data[\'price\'] = \'<span data-value=\\\'\' . $this->tax->calculate($product_info[\'price\'], $product_info[\'tax_class_id\'], $this->config->get(\'config_tax\')) . \'\\\' class=\\\'autocalc-product-price\\\'>\' . $data[\'price\'] . \'</span>\';\n        }\n        if ($data[\'special\']) {\n            $data[\'special\'] = \'<span data-value=\\\'\' . $this->tax->calculate($product_info[\'special\'], $product_info[\'tax_class_id\'], $this->config->get(\'config_tax\')) . \'\\\' class=\\\'autocalc-product-special\\\'>\' . $data[\'special\'] . \'</span>\';\n        }\n        if ($data[\'points\']) {\n            $data[\'points\'] = \'<span data-value=\\\'\' . $product_info[\'points\'] . \'\\\' class=\\\'autocalc-product-points\\\'>\' . $data[\'points\'] . \'</span>\';\n        }\n        if ($data[\'tax\']) {\n            $data[\'tax\'] = \'<span data-value=\\\'\' . (float)($product_info[\'special\'] ? $product_info[\'special\'] : $product_info[\'price\']) . \'\\\' class=\\\'autocalc-product-tax\\\'>\' . $data[\'tax\'] . \'</span>\';\n        }\n        \n        $data[\'apo_price_value\'] = $product_info[\'price\'];\n        $data[\'apo_special_value\'] = $product_info[\'special\'];\n        $data[\'apo_tax_value\'] = (float)$product_info[\'special\'] ? $product_info[\'special\'] : $product_info[\'price\'];\n        $data[\'apo_points_value\'] = $product_info[\'points\'];\n        \n        $currency_code = $this->session->data[\'currency\'];\n        $data[\'autocalc_currency\'] = array(\n            \'value\'           => (float)$this->currency->getValue($currency_code),\n            \'symbol_left\'     => str_replace(\"\'\", \"\\\'\", $this->currency->getSymbolLeft($currency_code)),\n            \'symbol_right\'    => str_replace(\"\'\", \"\\\'\", $this->currency->getSymbolRight($currency_code)),\n            \'decimals\'        => (int)$this->currency->getDecimalPlace($currency_code),\n            \'decimal_point\'   => $this->language->get(\'decimal_point\'),\n            \'thousand_point\'  => $this->language->get(\'thousand_point\'),\n        );\n        \n\n        $currency2_code = $this->config->get(\'config_currency2\');\n        if ($this->currency->has($currency2_code) && $currency2_code != $currency_code) {\n            $currency_code = $currency2_code;\n            $data[\'autocalc_currency2\'] = array(\n                \'value\'           => (float)$this->currency->getValue($currency_code),\n                \'symbol_left\'     => str_replace(\"\'\", \"\\\'\", $this->currency->getSymbolLeft($currency_code)),\n                \'symbol_right\'    => str_replace(\"\'\", \"\\\'\", $this->currency->getSymbolRight($currency_code)),\n                \'decimals\'        => (int)$this->currency->getDecimalPlace($currency_code),\n                \'decimal_point\'   => $this->language->get(\'decimal_point\'),\n                \'thousand_point\'  => $this->language->get(\'thousand_point\'),\n            );\n        }\n        \n        $data[\'discounts_raw\'] = $discounts;\n\n        $data[\'tax_class_id\'] = $product_info[\'tax_class_id\'];\n        $data[\'tax_rates\'] = $this->tax->getRates(0, $product_info[\'tax_class_id\']);\n      \n        $data[\'autocalc_option_special\'] = $this->config->get(\'config_autocalc_option_special\');\n        $data[\'autocalc_option_discount\'] = $this->config->get(\'config_autocalc_option_discount\');\n        $data[\'autocalc_not_mul_qty\'] = $this->config->get(\'config_autocalc_not_mul_qty\');\n        $data[\'autocalc_select_first\'] = $this->config->get(\'config_autocalc_select_first\');\n      ]]></add>\n    </operation>\n    <operation>\n      <search><![CDATA[$product_option_value_data[] = array(]]></search>\n      <add position=\"before\"><![CDATA[\n        if ($price) {\n            switch ($option_value[\'price_prefix\']) {\n                case \'%\':\n                    $price = ($option_value[\'price\'] > 0 ? \'+\' : \'\') . (float)$option_value[\'price\'] . \'%\';\n                    break;\n                case \'*\':\n                    $price = \'*\' . (float)$option_value[\'price\'];\n                    break;\n                case \'/\':\n                    $price = \'/\' . (float)$option_value[\'price\'];\n                    break;\n            }\n        }\n        if ($this->config->get(\'config_autocalc_hide_option_price\')) $price = false;\n      ]]></add>\n    </operation>\n    <operation>\n      <search><![CDATA[$product_option_value_data[] = array(]]></search>\n      <add position=\"after\"><![CDATA[\n        \'apo_price_value\'               => $option_value[\'price\'],\n        \'apo_points_value\'              => isset($option_value[\'points_prefix\']) && $option_value[\'points\'] ? intval($option_value[\'points_prefix\'].$option_value[\'points\']) : 0,\n      ]]></add>\n    </operation>\n  </file>\n    \n  <file path=\"catalog/controller/common/footer.php\">\n    <operation>\n      <search><![CDATA[public function index() {]]></search>\n      <add position=\"after\"><![CDATA[\n        $currency_code = $this->session->data[\'currency\'];\n        $data[\'autocalc_currency\'] = array(\n            \'value\'           => (float)$this->currency->getValue($currency_code),\n            \'symbol_left\'     => str_replace(\"\'\", \"\\\'\", $this->currency->getSymbolLeft($currency_code)),\n            \'symbol_right\'    => str_replace(\"\'\", \"\\\'\", $this->currency->getSymbolRight($currency_code)),\n            \'decimals\'        => (int)$this->currency->getDecimalPlace($currency_code),\n            \'decimal_point\'   => $this->language->get(\'decimal_point\'),\n            \'thousand_point\'  => $this->language->get(\'thousand_point\'),\n        );\n        \n        $data[\'autocalc_option_special\'] = $this->config->get(\'config_autocalc_option_special\');\n        $data[\'autocalc_option_discount\'] = $this->config->get(\'config_autocalc_option_discount\');\n        $data[\'autocalc_not_mul_qty\'] = $this->config->get(\'config_autocalc_not_mul_qty\');\n        $data[\'autocalc_select_first\'] = $this->config->get(\'config_autocalc_select_first\');\n      ]]></add>\n    </operation>\n  </file>\n  <file path=\"catalog/model/extension/module/uni_new_data.php\">\n    <operation error=\"skip\">\n      <search><![CDATA[$product_option_value_data[] = array(]]></search>\n      <add position=\"before\"><![CDATA[\n        if (!empty($option_price)) {\n            switch ($option_value[\'price_prefix\']) {\n                case \'%\':\n                    $option_price = ($option_value[\'price\'] > 0 ? \'+\' : \'\') . (float)$option_value[\'price\'] . \'%\';\n                    break;\n                case \'*\':\n                    $option_price = \'*\' . (float)$option_value[\'price\'];\n                    break;\n                case \'/\':\n                    $option_price = \'/\' . (float)$option_value[\'price\'];\n                    break;\n            }\n        }\n      ]]></add>\n    </operation>\n    <operation error=\"skip\">\n      <search><![CDATA[if(isset($uniset[\'liveprice\'])) {]]></search>\n      <add position=\"replace\"><![CDATA[if(true) {]]></add>\n    </operation>    \n  </file>\n  \n  <!-- NS -->  \n  <file path=\"catalog/controller/{product/*,extension/module/*}.php\">\n    <operation error=\"skip\">\n      <search><![CDATA[$option_price = $this->currency->format]]></search>\n      <add position=\"after\"><![CDATA[\n        if ($this->config->get(\'config_autocalc_hide_option_price\')) $option_price = false;\n      ]]></add>\n    </operation>\n    <operation error=\"skip\">\n      <search><![CDATA[$price = $this->currency->format($this->tax->calculate($option_value[\'price\']]]></search>\n      <add position=\"after\"><![CDATA[\n        if ($this->config->get(\'config_autocalc_hide_option_price\')) $price = false;\n      ]]></add>\n    </operation>\n  </file>\n  \n  \n  <file path=\"catalog/view/theme/*/template/product/product*.twig\">\n    <operation error=\"skip\"> <!-- royal -->\n      <search><![CDATA[{{ option_value[\'price_prefix\'] }}{{ option_value[\'price\'] }}]]></search>\n      <add position=\"replace\"><![CDATA[{{ option_value.price_prefix }}{{ option_value.price }}]]></add>\n    </operation>\n  </file>  \n\n  <file path=\"catalog/view/theme/unishop2/template/{product/*,extension/module/*}.twig\">\n    <operation error=\"skip\">\n      <search><![CDATA[{{option_value.price_prefix}}{{option_value.price}}]]></search>\n      <add position=\"replace\"><![CDATA[{% if option_value.price_prefix == \'+\' or option_value.price_prefix == \'-\' %}{{ option_value.price_prefix }}{% endif %}{{ option_value.price }}]]></add>\n    </operation>\n  </file>  \n  <file path=\"catalog/view/theme/newstore/template/{product/*,extension/module/*}.twig\">\n    <operation error=\"skip\">\n      <search><![CDATA[{{ option_value.price_prefix }}{{ option_value.price }}]]></search>\n      <add position=\"replace\"><![CDATA[{% if option_value.price_prefix == \'+\' or option_value.price_prefix == \'-\' %}{{ option_value.price_prefix }}{% endif %}{{ option_value.price }}]]></add>\n    </operation>    \n    <operation error=\"skip\">\n      <search><![CDATA[onchange=\"recalc]]></search>\n      <add position=\"replace\"><![CDATA[data-old-onchange=\"recalc]]></add>\n    </operation>    \n    <operation error=\"skip\">\n      <search><![CDATA[data-option-prefix=\"{{ option_value.price_prefix }}\" data-option-price=\"{{ option_value.price_value }}\"]]></search>\n      <add position=\"replace\"><![CDATA[data-prefix=\"{{ option_value.price_prefix }}\" data-price=\"{{ option_value.price_value }}\" data-option-prefix=\"{{ option_value.price_prefix }}\" data-option-price=\"{{ option_value.price_value }}\"]]></add>\n    </operation>\n    <operation error=\"skip\">\n      <search><![CDATA[<p class=\"price\">]]></search>\n      <add position=\"replace\"><![CDATA[<p class=\"price\" data-price=\"{{ product.price_no_format }}\" data-special=\"{{ product.special_no_format }}\">]]></add>\n    </operation>\n    <operation error=\"skip\">\n      <search><![CDATA[<div class=\"price\">]]></search>\n      <add position=\"replace\"><![CDATA[<div class=\"price\" data-price=\"{{ product.price_no_format }}\" data-special=\"{{ product.special_no_format }}\">]]></add>\n    </operation>    \n    <operation error=\"skip\">\n      <search><![CDATA[onkeyup=\"validate_quantity(]]></search>\n      <add position=\"replace\"><![CDATA[data-old-onkeyup=\"validate_quantity(]]></add>\n    </operation>\n    <operation error=\"skip\">\n      <search><![CDATA[recalc_quantity(]]></search>\n      <add position=\"replace\"><![CDATA[// recalc_quantity(]]></add>\n    </operation>\n  </file>\n  \n  <file path=\"catalog/view/theme/{unishop2,newstore}/template/common/footer.twig\">    \n    <operation error=\"skip\">\n      <search><![CDATA[<footer>]]></search>\n      <add position=\"before\"><![CDATA[\n<!--autocalc_price_option_v4-->\n<script type=\"text/javascript\"><!--\nfunction price_format_ucat(price) { \nc={{ autocalc_currency.decimals }};d=\'{{ autocalc_currency.decimal_point }}\';t=\'{{ autocalc_currency.thousand_point }}\';sl=\'{{ autocalc_currency.symbol_left }}\';sr=\'{{ autocalc_currency.symbol_right }}\';n=price;i=parseInt(n=Math.abs(n).toFixed(c))+\'\'; j=((j=i.length)>3)?j%3:0;price_text=sl+(j?i.substr(0,j)+t:\'\')+i.substr(j).replace(/(\\d{3})(?=\\d)/g,\"$1\"+t)+(c?d+Math.abs(n-i).toFixed(c).slice(2):\'\')+sr;{% if autocalc_currency2 %}c={{ autocalc_currency2.decimals }};d=\'{{ autocalc_currency2.decimal_point }}\';t=\'{{ autocalc_currency2.thousand_point }}\';sl=\'{{ autocalc_currency2.symbol_left }}\';sr=\'{{ autocalc_currency2.symbol_right }}\';n=price*{{ autocalc_currency2.value }};i=parseInt(n=Math.abs(n).toFixed(c))+\'\'; j=((j=i.length)>3)?j%3:0; price_text+=\'  <span class=\"currency2\">(\' + sl+(j?i.substr(0,j)+t:\'\')+i.substr(j).replace(/(\\d{3})(?=\\d)/g,\"$1\"+t)+(c?d+Math.abs(n-i).toFixed(c).slice(2):\'\')+sr + \')</span>\';{% endif %}return price_text;\n}\nfunction aa_ucat($s,p,dp,ff){$s.each(function(){var $t=$(this);$({value:$t.data(\'value\')||dp}).animate({value:p},{easing:\'swing\',duration:500,step:function(value){$t.html(ff(value));$t.data(\'value\',value);}});});}\nfunction aa_pds(d,p,q){if(!d)return(p);d=JSON.parse(d.replace(/\'/g,\'\"\'));d.forEach(function(di){if(q>=Number(di.quantity))p=Number(di.price)||p;});return p;}\nfunction recalculateprice_cat(o) {\n  dc=1;$o=$(o);$c=$o.closest(\'#quick_order\');if($c.length==0)$c=$o.closest(\'.product-thumb\');q=Number($c.find(\'input[name=\"quantity\"]\').first().val())||1;$pd=$c.find(\'p.price,div.price\').first();pp=Number($pd.data(\'price\')||0);ps=Number($pd.data(\'special\')||0);if(isNaN(pp))return;if(ps==0){ps=false;dp=aa_pds($pd.data(\'discount\'),pp,q);{% if autocalc_option_discount %}if(pp)dc=dp/pp;{% else %}pp=dp;{% endif %}}var spp=pp;var sps=ps;var op=0;var sc=1.0;if(ps!==false)sc=pp/ps;$c.find(\'input:checked,option:selected\').each(function(){if($(this).data(\'prefix\')==\'=\'){op+=Number($(this).data(\'price\'));pp=0;if(ps!==false)ps=0;}});$c.find(\'input:checked,option:selected\').each(function(){if($(this).data(\'prefix\')==\'+\'){op+=Number($(this).data(\'price\'));}if($(this).data(\'prefix\')==\'-\'){op-=Number($(this).data(\'price\'));}if($(this).data(\'prefix\')==\'%\'){pcnt=1.0+(Number($(this).data(\'price\'))/100.0);op*=pcnt;pp*=pcnt;if(ps!==false)ps*=pcnt;}if($(this).data(\'prefix\')==\'*\'){op*=Number($(this).data(\'price\'));pp*=Number($(this).data(\'price\'));if(ps!==false)ps*=Number($(this).data(\'price\'));}if($(this).data(\'prefix\')==\'/\'){op/=Number($(this).data(\'price\'));pp/=Number($(this).data(\'price\'));if(ps!==false)ps/=Number($(this).data(\'price\'));}});pp+=op;if(ps!==false){ps+=op;{% if autocalc_option_special %}ps=pp/sc;{% else %}pp=ps*sc;{% endif %}}else{pp*=dc;}pp*=q;if(ps!==false){ps*=q;aa_ucat($c.find(\'.price-old\'),pp,spp,price_format_ucat);aa_ucat($c.find(\'.price-new\'),ps,sps,price_format_ucat);}else{aa_ucat($pd,pp,spp,price_format_ucat);}\n}\nfunction autocalc_init() {\n  $(\'.product-thumb .price-tax\').remove();\n  $(\'#quick_order input[type=\"checkbox\"],#quick_order input[type=\"radio\"],#quick_order select,.product-thumb input[type=\"checkbox\"],.product-thumb input[type=\"radio\"],.product-thumb select\').each(function(){if($(this).data(\'autocalc\'))return;$(this).data(\'autocalc\',1).on(\'change\',function(){recalculateprice_cat(this);});});\n  $(\'#quick_order input[name=\"quantity\"],.product-thumb input[name=\"quantity\"]\').each(function(){if($(this).data(\'autocalc\'))return;$(this).data(\'autocalc\',1).on(\'input change\',function(){recalculateprice_cat(this);});}); \n  $(\'.product-thumb .option\').wrapInner(function(){return $(this).find(\'form\').length==0?\'<form></form>\':\'\';});\n  {% if autocalc_select_first %}\n  $(\'#quick_order select[name^=\"option\"] option[value=\"\"], .product-thumb select[name^=\"option\"] option[value=\"\"]\').remove();\n  last_name=\'\';$(\'#quick_order input[type=\"radio\"][name^=\"option\"], .product-thumb input[type=\"radio\"][name^=\"option\"]\').each(function(){if($(this).attr(\'name\')!=last_name)$(this).prop(\'checked\',true).trigger(\'change\');last_name=$(this).attr(\'name\');});\n  $(\'#quick_order input[type=\"checkbox\"]:checked,#quick_order input[type=\"radio\"]:checked,#quick_order select,.product-thumb input[type=\"checkbox\"]:checked,.product-thumb input[type=\"radio\"]:checked,.product-thumb select\').each(function(){$(this).trigger(\'change\');});\n  {% endif %}\n}\n$(document).ready(function() {\n  autocalc_init();\n});\n//--></script>\n      ]]></add>\n    </operation>\n  </file>\n  <file path=\"catalog/view/theme/unishop2/template/extension/module/uni_quick_order.twig\">    \n    <operation error=\"skip\">\n      <search><![CDATA[<div id=\"modal-quick-order\" class=\"modal fade\">]]></search>\n      <add position=\"after\"><![CDATA[\n<script type=\"text/javascript\"><!--\n$(document).ready(function() {\n  if (typeof autocalc_init == \'function\') autocalc_init();\n});\n//--></script>\n      ]]></add>\n    </operation>\n  </file>\n  \n  <file path=\"catalog/view/theme/*/template/product/product*.twig\">\n    <operation error=\"skip\">\n      <search><![CDATA[{{ option_value.price_prefix }}{{ option_value.price }}]]></search>\n      <add position=\"replace\"><![CDATA[{% if option_value.price_prefix == \'+\' or option_value.price_prefix == \'-\' %}{{ option_value.price_prefix }}{% endif %}{{ option_value.price }}]]></add>\n    </operation>\n    <operation error=\"skip\">\n      <search><![CDATA[value=\"{{ option_value.product_option_value_id }}\"]]></search>\n      <add position=\"replace\"><![CDATA[value=\"{{ option_value.product_option_value_id }}\" data-points=\"{{ option_value.apo_points_value }}\" data-prefix=\"{{ option_value.price_prefix }}\" data-price=\"{{ option_value.apo_price_value }}\"]]></add>\n    </operation>\n    <operation error=\"skip\">\n      <search><![CDATA[{{option_value.price_prefix}}{{option_value.price}}]]></search>\n      <add position=\"replace\"><![CDATA[{% if option_value.price_prefix == \'+\' or option_value.price_prefix == \'-\' %}{{ option_value.price_prefix }}{% endif %}{{ option_value.price }}]]></add>\n    </operation>\n    <operation error=\"skip\">\n      <search><![CDATA[value=\"{{option_value.product_option_value_id}}\"]]></search>\n      <add position=\"replace\"><![CDATA[value=\"{{ option_value.product_option_value_id }}\" data-points=\"{{ option_value.apo_points_value }}\" data-prefix=\"{{ option_value.price_prefix }}\" data-price=\"{{ option_value.apo_price_value }}\"]]></add>\n    </operation>    \n    <operation error=\"skip\">\n      <search><![CDATA[value=\"{{ option_value[\'product_option_value_id\'] }}\"]]></search>\n      <add position=\"replace\"><![CDATA[value=\"{{ option_value[\'product_option_value_id\'] }}\" data-points=\"{{ option_value.apo_points_value }}\" data-prefix=\"{{ option_value.price_prefix }}\" data-price=\"{{ option_value.apo_price_value }}\"]]></add>\n    </operation>\n    <operation error=\"skip\">\n      <search><![CDATA[{{footer}}]]></search>\n      <add position=\"replace\"><![CDATA[{{ footer }}]]></add>\n    </operation>\n    <operation error=\"skip\">\n      <search><![CDATA[{{ footer }}]]></search>\n      <add position=\"before\"><![CDATA[\n<!--autocalc_price_option_v4-->\n<script type=\"text/javascript\"><!--\nfunction price_format(price) { \nc={{ autocalc_currency.decimals }};d=\'{{ autocalc_currency.decimal_point }}\';t=\'{{ autocalc_currency.thousand_point }}\';sl=\'{{ autocalc_currency.symbol_left }}\';sr=\'{{ autocalc_currency.symbol_right }}\';n=price*{{ autocalc_currency.value }};i=parseInt(n=Math.abs(n).toFixed(c))+\'\'; j=((j=i.length)>3)?j%3:0;price_text=sl+(j?i.substr(0,j)+t:\'\')+i.substr(j).replace(/(\\d{3})(?=\\d)/g,\"$1\"+t)+(c?d+Math.abs(n-i).toFixed(c).slice(2):\'\')+sr;{% if autocalc_currency2 %}c={{ autocalc_currency2.decimals }};d=\'{{ autocalc_currency2.decimal_point }}\';t=\'{{ autocalc_currency2.thousand_point }}\';sl=\'{{ autocalc_currency2.symbol_left }}\';sr=\'{{ autocalc_currency2.symbol_right }}\';n=price*{{ autocalc_currency2.value }};i=parseInt(n=Math.abs(n).toFixed(c))+\'\'; j=((j=i.length)>3)?j%3:0; price_text+=\'  <span class=\"currency2\">(\' + sl+(j?i.substr(0,j)+t:\'\')+i.substr(j).replace(/(\\d{3})(?=\\d)/g,\"$1\"+t)+(c?d+Math.abs(n-i).toFixed(c).slice(2):\'\')+sr + \')</span>\';{% endif %}return price_text;\n}\nfunction points_format(v) {\nreturn v.toFixed(0);\n}\nfunction process_discounts(price, quantity) {\n{% for discounts in discounts_raw %}if(quantity>={{ discounts.quantity }}){price={{ discounts.price }};}{% endfor %}return price;\n}\nfunction calculate_tax(price) {\nvar p=price;{% for tax_rate in tax_rates %}{% if tax_rate.type == \'F\' %}p+={{ tax_rate.rate }};{% endif %}{% if tax_rate.type == \'P\' %}p+=price*{{ tax_rate.rate / 100.0 }};{% endif %}{% endfor %}return p;\n}\nfunction autocalc_aap(s,p,ff){$(s).each(function(){var $t=$(this);$({value:$t.data(\'value\')||0}).animate({value:p},{easing:\'swing\',duration:500,step:function(value){$t.html(ff(value));$t.data(\'value\',value);}});});}\nfunction recalculateprice() {\n    var main_price = {{ apo_price_value + 0.0 }};\n    var special = {{ apo_special_value + 0.0 }};\n    var input_quantity = Number($(\'#product input[name=\"quantity\"]\').val()) || 1;\n    var discount_coefficient = 1;\n    var option_price = 0;\n    var discount_quantity = 0;\n    \n    $(\'#product .owq-option input[type=\"checkbox\"]\').each(function() {\n        $qty = $(this).closest(\'tr\').find(\'.owq-input\');\n        if ($(this).data(\'split\')==\'/\') discount_quantity += Number($qty.val()) || 0;\n    });    \n    if (discount_quantity == 0) discount_quantity = input_quantity;\n    \n    {% if special %}\n    special_coefficient = {{ apo_price_value / apo_special_value }};\n    {% else %}\n    {% if autocalc_option_discount %}\n    if (main_price) discount_coefficient = process_discounts(main_price, discount_quantity) / main_price;\n    {% else %}\n    main_price = process_discounts(main_price, discount_quantity);\n    {% endif %}\n    {% endif %}\n    \n    {% if points %}\n    var points = {{ apo_points_value }};\n    $(\'#product input:checked,#product option:selected\').each(function() {\n        if ($(this).data(\'points\')) points += Number($(this).data(\'points\'));\n    });\n    autocalc_aap(\'.autocalc-product-points\', points, points_format);\n    {% endif %}\n    \n    $(\'#product input:checked,#product option:selected\').each(function() {\n    if ($(this).data(\'prefix\') == \'=\') {\n        option_price += Number($(this).data(\'price\'));\n        main_price = 0;\n        special = 0;\n    }\n    });\n    \n    $(\'#product input:checked,#product option:selected\').each(function() {\n    if ($(this).data(\'prefix\') == \'+\') {\n        option_price += Number($(this).data(\'price\'));\n    }\n    if ($(this).data(\'prefix\') == \'-\') {\n        option_price -= Number($(this).data(\'price\'));\n    }\n    if ($(this).data(\'prefix\') == \'%\') {\n        pcnt = 1.0 + (Number($(this).data(\'price\')) / 100.0);\n        option_price *= pcnt;\n        main_price *= pcnt;\n        special *= pcnt;\n    }\n    if ($(this).data(\'prefix\') == \'*\') {\n        option_price *= Number($(this).data(\'price\'));\n        main_price *= Number($(this).data(\'price\'));\n        special *= Number($(this).data(\'price\'));\n    }\n    if ($(this).data(\'prefix\') == \'/\') {\n        option_price /= Number($(this).data(\'price\'));\n        main_price /= Number($(this).data(\'price\'));\n        special /= Number($(this).data(\'price\'));\n    }\n    });\n    \n    special += option_price;\n    main_price += option_price;\n\n    {% if special %}\n    {% if autocalc_option_special %}\n    special = main_price / special_coefficient;\n    {% else %}\n    main_price = special * special_coefficient;\n    {% endif %}\n    tax = special;\n    {% else %}\n    {% if autocalc_option_discount %}\n    main_price *= discount_coefficient;\n    {% endif %}\n    tax = main_price;\n    {% endif %}\n    \n    {% if tax %}\n    main_price = calculate_tax(main_price);\n    {% if special %}\n    special = calculate_tax(special);\n    {% endif %}\n    {% endif %}\n    \n    {% if not autocalc_not_mul_qty %}\n    if (input_quantity > 0) {\n        main_price *= input_quantity;\n        special *= input_quantity;\n        {% if tax %}tax *= input_quantity;{% endif %}\n    }\n    {% endif %}\n    \n    autocalc_aap(\'.autocalc-product-price\', main_price, price_format);\n    {% if special %}autocalc_aap(\'.autocalc-product-special\', special, price_format);{% endif %}\n    {% if tax %}autocalc_aap(\'.autocalc-product-tax\', tax, price_format);{% endif %}\n}\n\n$(document).ready(function() {\n    $(\'#product input[type=\"checkbox\"],#product input[type=\"radio\"],#product select\').each(function(){if($(this).data(\'autocalc\'))return;$(this).data(\'autocalc\',1).on(\'change\',function(){recalculateprice();});});    \n    $(\'#product input[name=\"quantity\"]\').each(function(){if($(this).data(\'autocalc\'))return;var $q=$(this);$q.data(\'autocalc\',1).data(\'val\',$q.val());(function(){if($q.val()!=$q.data(\'val\')){$q.data(\'val\',$q.val());recalculateprice();}setTimeout(arguments.callee,250);})();});\n    \n    {% if autocalc_select_first %}\n    $(\'#product select[name^=\"option\"] option[value=\"\"]\').remove();\n    last_name=\'\';$(\'#product input[type=\"radio\"][name^=\"option\"]\').each(function(){if($(this).attr(\'name\')!=last_name)$(this).prop(\'checked\',true);last_name=$(this).attr(\'name\');});\n    {% endif %}\n    \n    recalculateprice();\n});\n//--></script>\n      ]]></add>\n    </operation>\n  </file>\n  <file path=\"catalog/language/*/common/footer.php\">\n    <operation>\n      <search ><![CDATA[http://opencart.pro/]]></search>\n      <add position=\"replace\"><![CDATA[https://dev-opencart.com/]]></add>\n    </operation>\n  </file>\n  <file path=\"catalog/language/*/common/footer.php\">\n    <operation>\n      <search ><![CDATA[http://myopencart.com/]]></search>\n      <add position=\"replace\"><![CDATA[https://dev-opencart.com/]]></add>\n    </operation>\n  </file>\n  <file path=\"catalog/language/*/common/footer.php\">\n    <operation>\n      <search ><![CDATA[http://www.opencart.com]]></search>\n      <add position=\"replace\"><![CDATA[https://dev-opencart.com/]]></add>\n    </operation>\n  </file>\n  <file path=\"catalog/language/*/common/footer.php\">\n    <operation>\n      <search ><![CDATA[http://lowenet.biz/]]></search>\n      <add position=\"replace\"><![CDATA[https://dev-opencart.com/]]></add>\n    </operation>\n  </file>\n</modification>', 1, '2021-05-24 16:30:42');
+
 -- --------------------------------------------------------
 
 --
@@ -2602,9 +2616,9 @@ CREATE TABLE `oc_product` (
 --
 
 INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `isbn`, `mpn`, `location`, `quantity`, `stock_status_id`, `image`, `manufacturer_id`, `shipping`, `price`, `points`, `tax_class_id`, `date_available`, `weight`, `weight_class_id`, `length`, `width`, `height`, `length_class_id`, `subtract`, `minimum`, `sort_order`, `status`, `viewed`, `date_added`, `date_modified`, `noindex`) VALUES
-(52, 'iris-beige', '', '', '', '', '', '', '', 1000, 7, 'catalog/iris-biege.png', 0, 1, '5000.0000', 0, 0, '2021-05-24', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 1, '2021-05-24 10:18:03', '2021-05-24 10:20:24', 1),
+(52, 'iris-beige', '', '', '', '', '', '', '', 1000, 7, 'catalog/iris-biege.png', 0, 1, '5000.0000', 0, 0, '2021-05-24', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 61, '2021-05-24 10:18:03', '2021-05-24 16:41:43', 1),
 (51, 'hortensia', '', '', '', '', '', '', '', 1000, 7, 'catalog/hortensia.png', 0, 1, '5000.0000', 0, 0, '2021-05-24', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 1, '2021-05-24 10:13:31', '2021-05-24 10:17:13', 1),
-(50, 'white-night', '', '', '', '', '', '', '', 1000, 7, 'catalog/white-night.png', 0, 1, '5000.0000', 0, 0, '2021-05-24', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 13, '2021-05-24 09:43:24', '2021-05-24 10:12:58', 1);
+(50, 'white-night', '', '', '', '', '', '', '', 1000, 7, 'catalog/white-night.png', 0, 1, '5000.0000', 0, 0, '2021-05-24', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 28, '2021-05-24 09:43:24', '2021-05-24 16:34:55', 1);
 
 -- --------------------------------------------------------
 
@@ -2697,10 +2711,10 @@ CREATE TABLE `oc_product_image` (
 INSERT INTO `oc_product_image` (`product_image_id`, `product_id`, `image`, `sort_order`) VALUES
 (2389, 51, 'catalog/hortensia.png', 1),
 (2390, 51, 'catalog/hortensia.png', 2),
-(2393, 52, 'catalog/iris-biege.png', 1),
-(2394, 52, 'catalog/iris-biege.png', 2),
-(2386, 50, 'catalog/white-night.png', 2),
-(2385, 50, 'catalog/white-night.png', 1);
+(2403, 52, 'catalog/iris-biege.png', 1),
+(2404, 52, 'catalog/iris-biege.png', 2),
+(2398, 50, 'catalog/white-night.png', 2),
+(2397, 50, 'catalog/white-night.png', 1);
 
 -- --------------------------------------------------------
 
@@ -2723,7 +2737,7 @@ CREATE TABLE `oc_product_option` (
 INSERT INTO `oc_product_option` (`product_option_id`, `product_id`, `option_id`, `value`, `required`) VALUES
 (229, 51, 13, '', 1),
 (228, 50, 13, '', 1),
-(230, 52, 13, '', 1);
+(230, 52, 13, '', 0);
 
 -- --------------------------------------------------------
 
@@ -2754,13 +2768,13 @@ CREATE TABLE `oc_product_option_value` (
 INSERT INTO `oc_product_option_value` (`product_option_value_id`, `product_option_id`, `product_id`, `option_id`, `option_value_id`, `quantity`, `subtract`, `price`, `price_prefix`, `points`, `points_prefix`, `weight`, `weight_prefix`) VALUES
 (24, 229, 51, 13, 51, 1, 1, '8000.0000', '+', 0, '+', '0.00000000', '+'),
 (23, 229, 51, 13, 50, 1, 1, '4000.0000', '+', 0, '+', '0.00000000', '+'),
-(22, 228, 50, 13, 52, 1, 1, '1200.0000', '+', 0, '+', '0.00000000', '+'),
+(22, 228, 50, 13, 52, 1, 1, '12000.0000', '+', 0, '+', '0.00000000', '+'),
 (21, 228, 50, 13, 51, 1, 1, '8000.0000', '+', 0, '+', '0.00000000', '+'),
-(20, 228, 50, 13, 50, 1, 1, '4000.0000', '+', 0, '+', '0.00000000', '+'),
+(20, 228, 50, 13, 49, 1, 1, '0.0000', '+', 0, '+', '0.00000000', '+'),
 (25, 229, 51, 13, 52, 1, 1, '1200.0000', '+', 0, '+', '0.00000000', '+'),
-(28, 230, 52, 13, 52, 1, 1, '1200.0000', '+', 0, '+', '0.00000000', '+'),
-(27, 230, 52, 13, 51, 1, 1, '8000.0000', '+', 0, '+', '0.00000000', '+'),
-(26, 230, 52, 13, 50, 1, 1, '4000.0000', '+', 0, '+', '0.00000000', '+');
+(28, 230, 52, 13, 52, 1, 1, '7000.0000', '+', 0, '+', '0.00000000', '+'),
+(27, 230, 52, 13, 51, 1, 1, '5000.0000', '+', 0, '+', '0.00000000', '+'),
+(26, 230, 52, 13, 50, 1, 1, '0.0000', '+', 0, '+', '0.00000000', '+');
 
 -- --------------------------------------------------------
 
@@ -2884,10 +2898,10 @@ CREATE TABLE `oc_product_to_category` (
 
 INSERT INTO `oc_product_to_category` (`product_id`, `category_id`, `main_category`) VALUES
 (51, 18, 1),
-(50, 18, 0),
+(50, 20, 1),
 (51, 20, 0),
 (52, 18, 1),
-(50, 20, 1),
+(50, 18, 0),
 (52, 20, 0);
 
 -- --------------------------------------------------------
@@ -3155,7 +3169,7 @@ INSERT INTO `oc_seo_url` (`seo_url_id`, `store_id`, `language_id`, `query`, `key
 (1049, 0, 2, 'category_id=18', 'perfume-candles'),
 (864, 0, 1, 'category_id=46', 'macs'),
 (866, 0, 1, 'category_id=45', 'windows'),
-(1046, 0, 1, 'product_id=52', 'Parfyum-Iris-bezh-Plangui'),
+(1059, 0, 2, 'product_id=52', 'Perfume-Iris-beige-Plangui'),
 (1045, 0, 2, 'product_id=51', 'Perfume-Hortenzia-Plangui'),
 (823, 0, 1, 'common/home', ''),
 (934, 0, 1, 'manufacturer_id=9', 'canon'),
@@ -3177,9 +3191,9 @@ INSERT INTO `oc_seo_url` (`seo_url_id`, `store_id`, `language_id`, `query`, `key
 (1048, 0, 1, 'category_id=18', 'parfyumernye-svechi'),
 (865, 0, 2, 'category_id=46', 'en_macs'),
 (867, 0, 2, 'category_id=45', 'en_windows'),
-(1047, 0, 2, 'product_id=52', 'Perfume-Iris-beige-Plangui'),
-(1042, 0, 1, 'product_id=50', 'Parfyum-Belye-nochi-Plangui'),
-(1043, 0, 2, 'product_id=50', 'White-Nights-Perfume-Plangui'),
+(1058, 0, 1, 'product_id=52', 'Parfyum-Iris-bezh-Plangui'),
+(1052, 0, 1, 'product_id=50', 'Parfyum-Belye-nochi-Plangui'),
+(1053, 0, 2, 'product_id=50', 'White-Nights-Perfume-Plangui'),
 (933, 0, 2, 'manufacturer_id=8', 'en_apple'),
 (935, 0, 2, 'manufacturer_id=9', 'en_canon'),
 (937, 0, 2, 'manufacturer_id=7', 'en_hewlett-packard'),
@@ -3222,8 +3236,8 @@ INSERT INTO `oc_session` (`session_id`, `data`, `expire`) VALUES
 ('54e6fd4cd23c6eb4b5b51b0511', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2021-04-15 00:11:40'),
 ('6d6e330c275d580f8460ddad4b', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2021-05-23 14:52:50'),
 ('8551a0ee5cf2cc8879743aaa0d', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2021-05-23 14:49:25'),
-('c2538e0bcc7cde1cb1364c984c', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"user_id\":\"1\",\"user_token\":\"dHJMW8JSlkQ0rqwhG4rgFUGRD75EMBAs\"}', '2021-05-24 09:14:58'),
-('d4ad9c787c68637d8eaf26ece3', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2021-05-24 08:37:26'),
+('c2538e0bcc7cde1cb1364c984c', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"user_id\":\"1\",\"user_token\":\"dHJMW8JSlkQ0rqwhG4rgFUGRD75EMBAs\",\"install\":\"6lcyYI3u2n\"}', '2021-05-24 15:47:56'),
+('d4ad9c787c68637d8eaf26ece3', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2021-05-24 10:13:11'),
 ('ee0783b3d8bd68c49a6db36c46', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2021-04-17 18:53:37'),
 ('f96ca8b1dd74dfd089c4544e8d', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"user_id\":\"1\",\"user_token\":\"cAvS5W3AR4k5xhbvXvF0dbYcsbj7qv4j\"}', '2021-05-08 02:11:41'),
 ('fabdecc05194b01418809b290f', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2021-04-14 15:33:57');
@@ -3248,51 +3262,52 @@ CREATE TABLE `oc_setting` (
 --
 
 INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `serialized`) VALUES
-(630, 0, 'config', 'config_valide_params', 'tracking\r\nutm_source\r\nutm_campaign\r\nutm_medium\r\ntype\r\nsource\r\nblock\r\nposition\r\nkeyword\r\nyclid\r\ngclid', 0),
-(629, 0, 'config', 'config_valide_param_flag', '0', 0),
-(628, 0, 'config', 'config_page_postfix', '', 0),
-(627, 0, 'config', 'config_seopro_lowercase', '0', 0),
-(626, 0, 'config', 'config_seopro_addslash', '0', 0),
-(625, 0, 'config', 'config_seo_url_cache', '0', 0),
-(624, 0, 'config', 'config_seo_url_include_path', '0', 0),
-(623, 0, 'config', 'config_seo_pro', '1', 0),
-(622, 0, 'config', 'config_error_filename', 'error.log', 0),
-(620, 0, 'config', 'config_error_display', '1', 0),
-(621, 0, 'config', 'config_error_log', '1', 0),
+(1042, 0, 'config', 'config_valide_params', 'tracking\r\nutm_source\r\nutm_campaign\r\nutm_medium\r\ntype\r\nsource\r\nblock\r\nposition\r\nkeyword\r\nyclid\r\ngclid', 0),
+(1041, 0, 'config', 'config_valide_param_flag', '0', 0),
+(1040, 0, 'config', 'config_page_postfix', '', 0),
+(1039, 0, 'config', 'config_seopro_lowercase', '0', 0),
+(1038, 0, 'config', 'config_seopro_addslash', '0', 0),
+(1037, 0, 'config', 'config_seo_url_cache', '0', 0),
+(1036, 0, 'config', 'config_seo_url_include_path', '0', 0),
+(1035, 0, 'config', 'config_seo_pro', '1', 0),
+(1034, 0, 'config', 'config_error_filename', 'error.log', 0),
+(1033, 0, 'config', 'config_error_log', '1', 0),
+(1032, 0, 'config', 'config_error_display', '1', 0),
+(1024, 0, 'config', 'config_compression', '0', 0),
+(1025, 0, 'config', 'config_secure', '0', 0),
+(1026, 0, 'config', 'config_password', '1', 0),
+(1027, 0, 'config', 'config_shared', '0', 0),
+(1028, 0, 'config', 'config_encryption', 'fQMDVpXbfbjckgvjFC9uBUOXeeCW8T7BWncRAxYMxmm5jIIjoGPzLhpJgxPivbDthT8Ey1xCGPIhybEjpDeuoGYskfovmNpr1wEQsvaHXlc4xLQQ9DJEV9mgG3xdKsH4X9iaORZw1ErSFa8QNUEyKJiXPHbRzGA05JEbvItVVwVxOEhrPcPLoURQKrQnO4SQnVaVm2mUgP5BqmPpN0j9kaRCv4WGvqir2vjoroxkotmrbuMmBKJbkEO4VfZjt7LRuBVTEuARC4y3FI39wH4qLTR9suFfQZlAPmVjh1MD5nVMbAv9PIwdAsoAsEwmbGUbsKTw1Ddds0ylWFlpka0qjjbEos4nH3LbPl84mGl9VlLiBpPnRegrXEQM4xGa0WiECM1FFSTpmKrIZh0JEQZR0B9xvgFVQrPrGE4BggGcs4n9h7lys5LGcAhYjU1AgUOFKxn8N577Xj4lWRCgjVR8o2aUBcqjN9Re06EHSnMRfuI41DM6ItHnHTl8DbkcZk57IQey4yRNbNBORm34FndFYvP2TRrjpMogOMlbUsR7hcgBZ2oOwnzkG1tTjvWSBxLx57Ug3PGuDM4Q8Jb8LZpp6CZTdOgCv3YfibpFx2jkS88VFYikm8KqLjAaN8Y5jK00HHc8gLgfi6uH8JMfcszrfZ5nYeQRkFwqAQNeH4MfeWha8bjQiLnWtJ9RiRQCFsWxaY1DvrN2wjOHvskr3DfhibVc2O1Rgxr9QuPeN4HJaIAOf9oJpHRO66dSbPBrINENKpMmbejXef9FKdiKmwSALJDcVFO2ZNsEymBviJphvwq58Uo9CZAoWPXoDALQ7YIKdDtzqRlxmHk5ptZqobdzkwSNbBStcgxWLUgN8D8YukZA3tYw1jHWMsrYd4DxOW2xLTAI5YMlKZgtqksEab3v9GLRqyIzTwHg0HUX2bLBv4ZvVQIVnZ8SgMWiBlOP3Kbeh9yzftPt1wgJ5pKgsA9DP5Yei2RxrA3vP7Gr6UEyC5c80U63gLpHwdyQaGehTrI3', 0),
+(1029, 0, 'config', 'config_file_max_size', '300000', 0),
+(1030, 0, 'config', 'config_file_ext_allowed', 'zip\r\ntxt\r\npng\r\njpe\r\njpeg\r\njpg\r\ngif\r\nbmp\r\nico\r\ntiff\r\ntif\r\nsvg\r\nsvgz\r\nzip\r\nrar\r\nmsi\r\ncab\r\nmp3\r\nqt\r\nmov\r\npdf\r\npsd\r\nai\r\neps\r\nps\r\ndoc', 0),
+(1031, 0, 'config', 'config_file_mime_allowed', 'text/plain\r\nimage/png\r\nimage/jpeg\r\nimage/gif\r\nimage/bmp\r\nimage/tiff\r\nimage/svg+xml\r\napplication/zip\r\n&quot;application/zip&quot;\r\napplication/x-zip\r\n&quot;application/x-zip&quot;\r\napplication/x-zip-compressed\r\n&quot;application/x-zip-compressed&quot;\r\napplication/rar\r\n&quot;application/rar&quot;\r\napplication/x-rar\r\n&quot;application/x-rar&quot;\r\napplication/x-rar-compressed\r\n&quot;application/x-rar-compressed&quot;\r\napplication/octet-stream\r\n&quot;application/octet-stream&quot;\r\naudio/mpeg\r\nvideo/quicktime\r\napplication/pdf', 0),
 (4, 0, 'voucher', 'total_voucher_sort_order', '8', 0),
 (5, 0, 'voucher', 'total_voucher_status', '1', 0),
-(617, 0, 'config', 'config_file_max_size', '300000', 0),
-(618, 0, 'config', 'config_file_ext_allowed', 'zip\r\ntxt\r\npng\r\njpe\r\njpeg\r\njpg\r\ngif\r\nbmp\r\nico\r\ntiff\r\ntif\r\nsvg\r\nsvgz\r\nzip\r\nrar\r\nmsi\r\ncab\r\nmp3\r\nqt\r\nmov\r\npdf\r\npsd\r\nai\r\neps\r\nps\r\ndoc', 0),
-(619, 0, 'config', 'config_file_mime_allowed', 'text/plain\r\nimage/png\r\nimage/jpeg\r\nimage/gif\r\nimage/bmp\r\nimage/tiff\r\nimage/svg+xml\r\napplication/zip\r\n&quot;application/zip&quot;\r\napplication/x-zip\r\n&quot;application/x-zip&quot;\r\napplication/x-zip-compressed\r\n&quot;application/x-zip-compressed&quot;\r\napplication/rar\r\n&quot;application/rar&quot;\r\napplication/x-rar\r\n&quot;application/x-rar&quot;\r\napplication/x-rar-compressed\r\n&quot;application/x-rar-compressed&quot;\r\napplication/octet-stream\r\n&quot;application/octet-stream&quot;\r\naudio/mpeg\r\nvideo/quicktime\r\napplication/pdf', 0),
-(600, 0, 'config', 'config_mail_engine', 'mail', 0),
-(601, 0, 'config', 'config_mail_parameter', '', 0),
-(602, 0, 'config', 'config_mail_smtp_hostname', '', 0),
-(603, 0, 'config', 'config_mail_smtp_username', '', 0),
-(604, 0, 'config', 'config_mail_smtp_password', '', 0),
-(605, 0, 'config', 'config_mail_smtp_port', '25', 0),
-(606, 0, 'config', 'config_mail_smtp_timeout', '5', 0),
-(607, 0, 'config', 'config_mail_alert', '[\"order\"]', 1),
-(608, 0, 'config', 'config_mail_alert_email', '', 0),
-(609, 0, 'config', 'config_maintenance', '0', 0),
-(610, 0, 'config', 'config_seo_url', '1', 0),
-(611, 0, 'config', 'config_robots', 'abot\r\ndbot\r\nebot\r\nhbot\r\nkbot\r\nlbot\r\nmbot\r\nnbot\r\nobot\r\npbot\r\nrbot\r\nsbot\r\ntbot\r\nvbot\r\nybot\r\nzbot\r\nbot.\r\nbot/\r\n_bot\r\n.bot\r\n/bot\r\n-bot\r\n:bot\r\n(bot\r\ncrawl\r\nslurp\r\nspider\r\nseek\r\naccoona\r\nacoon\r\nadressendeutschland\r\nah-ha.com\r\nahoy\r\naltavista\r\nananzi\r\nanthill\r\nappie\r\narachnophilia\r\narale\r\naraneo\r\naranha\r\narchitext\r\naretha\r\narks\r\nasterias\r\natlocal\r\natn\r\natomz\r\naugurfind\r\nbackrub\r\nbannana_bot\r\nbaypup\r\nbdfetch\r\nbig brother\r\nbiglotron\r\nbjaaland\r\nblackwidow\r\nblaiz\r\nblog\r\nblo.\r\nbloodhound\r\nboitho\r\nbooch\r\nbradley\r\nbutterfly\r\ncalif\r\ncassandra\r\nccubee\r\ncfetch\r\ncharlotte\r\nchurl\r\ncienciaficcion\r\ncmc\r\ncollective\r\ncomagent\r\ncombine\r\ncomputingsite\r\ncsci\r\ncurl\r\ncusco\r\ndaumoa\r\ndeepindex\r\ndelorie\r\ndepspid\r\ndeweb\r\ndie blinde kuh\r\ndigger\r\nditto\r\ndmoz\r\ndocomo\r\ndownload express\r\ndtaagent\r\ndwcp\r\nebiness\r\nebingbong\r\ne-collector\r\nejupiter\r\nemacs-w3 search engine\r\nesther\r\nevliya celebi\r\nezresult\r\nfalcon\r\nfelix ide\r\nferret\r\nfetchrover\r\nfido\r\nfindlinks\r\nfireball\r\nfish search\r\nfouineur\r\nfunnelweb\r\ngazz\r\ngcreep\r\ngenieknows\r\ngetterroboplus\r\ngeturl\r\nglx\r\ngoforit\r\ngolem\r\ngrabber\r\ngrapnel\r\ngralon\r\ngriffon\r\ngromit\r\ngrub\r\ngulliver\r\nhamahakki\r\nharvest\r\nhavindex\r\nhelix\r\nheritrix\r\nhku www octopus\r\nhomerweb\r\nhtdig\r\nhtml index\r\nhtml_analyzer\r\nhtmlgobble\r\nhubater\r\nhyper-decontextualizer\r\nia_archiver\r\nibm_planetwide\r\nichiro\r\niconsurf\r\niltrovatore\r\nimage.kapsi.net\r\nimagelock\r\nincywincy\r\nindexer\r\ninfobee\r\ninformant\r\ningrid\r\ninktomisearch.com\r\ninspector web\r\nintelliagent\r\ninternet shinchakubin\r\nip3000\r\niron33\r\nisraeli-search\r\nivia\r\njack\r\njakarta\r\njavabee\r\njetbot\r\njumpstation\r\nkatipo\r\nkdd-explorer\r\nkilroy\r\nknowledge\r\nkototoi\r\nkretrieve\r\nlabelgrabber\r\nlachesis\r\nlarbin\r\nlegs\r\nlibwww\r\nlinkalarm\r\nlink validator\r\nlinkscan\r\nlockon\r\nlwp\r\nlycos\r\nmagpie\r\nmantraagent\r\nmapoftheinternet\r\nmarvin/\r\nmattie\r\nmediafox\r\nmediapartners\r\nmercator\r\nmerzscope\r\nmicrosoft url control\r\nminirank\r\nmiva\r\nmj12\r\nmnogosearch\r\nmoget\r\nmonster\r\nmoose\r\nmotor\r\nmultitext\r\nmuncher\r\nmuscatferret\r\nmwd.search\r\nmyweb\r\nnajdi\r\nnameprotect\r\nnationaldirectory\r\nnazilla\r\nncsa beta\r\nnec-meshexplorer\r\nnederland.zoek\r\nnetcarta webmap engine\r\nnetmechanic\r\nnetresearchserver\r\nnetscoop\r\nnewscan-online\r\nnhse\r\nnokia6682/\r\nnomad\r\nnoyona\r\nnutch\r\nnzexplorer\r\nobjectssearch\r\noccam\r\nomni\r\nopen text\r\nopenfind\r\nopenintelligencedata\r\norb search\r\nosis-project\r\npack rat\r\npageboy\r\npagebull\r\npage_verifier\r\npanscient\r\nparasite\r\npartnersite\r\npatric\r\npear.\r\npegasus\r\nperegrinator\r\npgp key agent\r\nphantom\r\nphpdig\r\npicosearch\r\npiltdownman\r\npimptrain\r\npinpoint\r\npioneer\r\npiranha\r\nplumtreewebaccessor\r\npogodak\r\npoirot\r\npompos\r\npoppelsdorf\r\npoppi\r\npopular iconoclast\r\npsycheclone\r\npublisher\r\npython\r\nrambler\r\nraven search\r\nroach\r\nroad runner\r\nroadhouse\r\nrobbie\r\nrobofox\r\nrobozilla\r\nrules\r\nsalty\r\nsbider\r\nscooter\r\nscoutjet\r\nscrubby\r\nsearch.\r\nsearchprocess\r\nsemanticdiscovery\r\nsenrigan\r\nsg-scout\r\nshai\'hulud\r\nshark\r\nshopwiki\r\nsidewinder\r\nsift\r\nsilk\r\nsimmany\r\nsite searcher\r\nsite valet\r\nsitetech-rover\r\nskymob.com\r\nsleek\r\nsmartwit\r\nsna-\r\nsnappy\r\nsnooper\r\nsohu\r\nspeedfind\r\nsphere\r\nsphider\r\nspinner\r\nspyder\r\nsteeler/\r\nsuke\r\nsuntek\r\nsupersnooper\r\nsurfnomore\r\nsven\r\nsygol\r\nszukacz\r\ntach black widow\r\ntarantula\r\ntempleton\r\n/teoma\r\nt-h-u-n-d-e-r-s-t-o-n-e\r\ntheophrastus\r\ntitan\r\ntitin\r\ntkwww\r\ntoutatis\r\nt-rex\r\ntutorgig\r\ntwiceler\r\ntwisted\r\nucsd\r\nudmsearch\r\nurl check\r\nupdated\r\nvagabondo\r\nvalkyrie\r\nverticrawl\r\nvictoria\r\nvision-search\r\nvolcano\r\nvoyager/\r\nvoyager-hc\r\nw3c_validator\r\nw3m2\r\nw3mir\r\nwalker\r\nwallpaper\r\nwanderer\r\nwauuu\r\nwavefire\r\nweb core\r\nweb hopper\r\nweb wombat\r\nwebbandit\r\nwebcatcher\r\nwebcopy\r\nwebfoot\r\nweblayers\r\nweblinker\r\nweblog monitor\r\nwebmirror\r\nwebmonkey\r\nwebquest\r\nwebreaper\r\nwebsitepulse\r\nwebsnarf\r\nwebstolperer\r\nwebvac\r\nwebwalk\r\nwebwatch\r\nwebwombat\r\nwebzinger\r\nwhizbang\r\nwhowhere\r\nwild ferret\r\nworldlight\r\nwwwc\r\nwwwster\r\nxenu\r\nxget\r\nxift\r\nxirq\r\nyandex\r\nyanga\r\nyeti\r\nyodao\r\nzao\r\nzippp\r\nzyborg', 0),
-(589, 0, 'config', 'config_affiliate_group_id', '1', 0),
-(590, 0, 'config', 'config_affiliate_approval', '0', 0),
-(612, 0, 'config', 'config_compression', '0', 0),
-(613, 0, 'config', 'config_secure', '0', 0),
-(614, 0, 'config', 'config_password', '1', 0),
-(615, 0, 'config', 'config_shared', '0', 0),
-(616, 0, 'config', 'config_encryption', 'fQMDVpXbfbjckgvjFC9uBUOXeeCW8T7BWncRAxYMxmm5jIIjoGPzLhpJgxPivbDthT8Ey1xCGPIhybEjpDeuoGYskfovmNpr1wEQsvaHXlc4xLQQ9DJEV9mgG3xdKsH4X9iaORZw1ErSFa8QNUEyKJiXPHbRzGA05JEbvItVVwVxOEhrPcPLoURQKrQnO4SQnVaVm2mUgP5BqmPpN0j9kaRCv4WGvqir2vjoroxkotmrbuMmBKJbkEO4VfZjt7LRuBVTEuARC4y3FI39wH4qLTR9suFfQZlAPmVjh1MD5nVMbAv9PIwdAsoAsEwmbGUbsKTw1Ddds0ylWFlpka0qjjbEos4nH3LbPl84mGl9VlLiBpPnRegrXEQM4xGa0WiECM1FFSTpmKrIZh0JEQZR0B9xvgFVQrPrGE4BggGcs4n9h7lys5LGcAhYjU1AgUOFKxn8N577Xj4lWRCgjVR8o2aUBcqjN9Re06EHSnMRfuI41DM6ItHnHTl8DbkcZk57IQey4yRNbNBORm34FndFYvP2TRrjpMogOMlbUsR7hcgBZ2oOwnzkG1tTjvWSBxLx57Ug3PGuDM4Q8Jb8LZpp6CZTdOgCv3YfibpFx2jkS88VFYikm8KqLjAaN8Y5jK00HHc8gLgfi6uH8JMfcszrfZ5nYeQRkFwqAQNeH4MfeWha8bjQiLnWtJ9RiRQCFsWxaY1DvrN2wjOHvskr3DfhibVc2O1Rgxr9QuPeN4HJaIAOf9oJpHRO66dSbPBrINENKpMmbejXef9FKdiKmwSALJDcVFO2ZNsEymBviJphvwq58Uo9CZAoWPXoDALQ7YIKdDtzqRlxmHk5ptZqobdzkwSNbBStcgxWLUgN8D8YukZA3tYw1jHWMsrYd4DxOW2xLTAI5YMlKZgtqksEab3v9GLRqyIzTwHg0HUX2bLBv4ZvVQIVnZ8SgMWiBlOP3Kbeh9yzftPt1wgJ5pKgsA9DP5Yei2RxrA3vP7Gr6UEyC5c80U63gLpHwdyQaGehTrI3', 0),
-(586, 0, 'config', 'config_stock_display', '0', 0),
-(587, 0, 'config', 'config_stock_warning', '0', 0),
-(599, 0, 'config', 'config_icon', 'catalog/cart.png', 0),
-(598, 0, 'config', 'config_logo', 'catalog/opencart-logo.png', 0),
-(597, 0, 'config', 'config_captcha_page', '[\"review\",\"return\",\"contact\"]', 1),
-(596, 0, 'config', 'config_captcha', '', 0),
-(595, 0, 'config', 'config_return_status_id', '2', 0),
-(594, 0, 'config', 'config_return_id', '0', 0),
-(593, 0, 'config', 'config_affiliate_id', '4', 0),
-(592, 0, 'config', 'config_affiliate_commission', '5', 0),
+(1011, 0, 'config', 'config_icon', 'catalog/cart.png', 0),
+(1012, 0, 'config', 'config_mail_engine', 'mail', 0),
+(1013, 0, 'config', 'config_mail_parameter', '', 0),
+(1014, 0, 'config', 'config_mail_smtp_hostname', '', 0),
+(1015, 0, 'config', 'config_mail_smtp_username', '', 0),
+(1016, 0, 'config', 'config_mail_smtp_password', '', 0),
+(1017, 0, 'config', 'config_mail_smtp_port', '25', 0),
+(1018, 0, 'config', 'config_mail_smtp_timeout', '5', 0),
+(1019, 0, 'config', 'config_mail_alert', '[\"order\"]', 1),
+(1020, 0, 'config', 'config_mail_alert_email', '', 0),
+(1021, 0, 'config', 'config_maintenance', '0', 0),
+(1022, 0, 'config', 'config_seo_url', '1', 0),
+(1023, 0, 'config', 'config_robots', 'abot\r\ndbot\r\nebot\r\nhbot\r\nkbot\r\nlbot\r\nmbot\r\nnbot\r\nobot\r\npbot\r\nrbot\r\nsbot\r\ntbot\r\nvbot\r\nybot\r\nzbot\r\nbot.\r\nbot/\r\n_bot\r\n.bot\r\n/bot\r\n-bot\r\n:bot\r\n(bot\r\ncrawl\r\nslurp\r\nspider\r\nseek\r\naccoona\r\nacoon\r\nadressendeutschland\r\nah-ha.com\r\nahoy\r\naltavista\r\nananzi\r\nanthill\r\nappie\r\narachnophilia\r\narale\r\naraneo\r\naranha\r\narchitext\r\naretha\r\narks\r\nasterias\r\natlocal\r\natn\r\natomz\r\naugurfind\r\nbackrub\r\nbannana_bot\r\nbaypup\r\nbdfetch\r\nbig brother\r\nbiglotron\r\nbjaaland\r\nblackwidow\r\nblaiz\r\nblog\r\nblo.\r\nbloodhound\r\nboitho\r\nbooch\r\nbradley\r\nbutterfly\r\ncalif\r\ncassandra\r\nccubee\r\ncfetch\r\ncharlotte\r\nchurl\r\ncienciaficcion\r\ncmc\r\ncollective\r\ncomagent\r\ncombine\r\ncomputingsite\r\ncsci\r\ncurl\r\ncusco\r\ndaumoa\r\ndeepindex\r\ndelorie\r\ndepspid\r\ndeweb\r\ndie blinde kuh\r\ndigger\r\nditto\r\ndmoz\r\ndocomo\r\ndownload express\r\ndtaagent\r\ndwcp\r\nebiness\r\nebingbong\r\ne-collector\r\nejupiter\r\nemacs-w3 search engine\r\nesther\r\nevliya celebi\r\nezresult\r\nfalcon\r\nfelix ide\r\nferret\r\nfetchrover\r\nfido\r\nfindlinks\r\nfireball\r\nfish search\r\nfouineur\r\nfunnelweb\r\ngazz\r\ngcreep\r\ngenieknows\r\ngetterroboplus\r\ngeturl\r\nglx\r\ngoforit\r\ngolem\r\ngrabber\r\ngrapnel\r\ngralon\r\ngriffon\r\ngromit\r\ngrub\r\ngulliver\r\nhamahakki\r\nharvest\r\nhavindex\r\nhelix\r\nheritrix\r\nhku www octopus\r\nhomerweb\r\nhtdig\r\nhtml index\r\nhtml_analyzer\r\nhtmlgobble\r\nhubater\r\nhyper-decontextualizer\r\nia_archiver\r\nibm_planetwide\r\nichiro\r\niconsurf\r\niltrovatore\r\nimage.kapsi.net\r\nimagelock\r\nincywincy\r\nindexer\r\ninfobee\r\ninformant\r\ningrid\r\ninktomisearch.com\r\ninspector web\r\nintelliagent\r\ninternet shinchakubin\r\nip3000\r\niron33\r\nisraeli-search\r\nivia\r\njack\r\njakarta\r\njavabee\r\njetbot\r\njumpstation\r\nkatipo\r\nkdd-explorer\r\nkilroy\r\nknowledge\r\nkototoi\r\nkretrieve\r\nlabelgrabber\r\nlachesis\r\nlarbin\r\nlegs\r\nlibwww\r\nlinkalarm\r\nlink validator\r\nlinkscan\r\nlockon\r\nlwp\r\nlycos\r\nmagpie\r\nmantraagent\r\nmapoftheinternet\r\nmarvin/\r\nmattie\r\nmediafox\r\nmediapartners\r\nmercator\r\nmerzscope\r\nmicrosoft url control\r\nminirank\r\nmiva\r\nmj12\r\nmnogosearch\r\nmoget\r\nmonster\r\nmoose\r\nmotor\r\nmultitext\r\nmuncher\r\nmuscatferret\r\nmwd.search\r\nmyweb\r\nnajdi\r\nnameprotect\r\nnationaldirectory\r\nnazilla\r\nncsa beta\r\nnec-meshexplorer\r\nnederland.zoek\r\nnetcarta webmap engine\r\nnetmechanic\r\nnetresearchserver\r\nnetscoop\r\nnewscan-online\r\nnhse\r\nnokia6682/\r\nnomad\r\nnoyona\r\nnutch\r\nnzexplorer\r\nobjectssearch\r\noccam\r\nomni\r\nopen text\r\nopenfind\r\nopenintelligencedata\r\norb search\r\nosis-project\r\npack rat\r\npageboy\r\npagebull\r\npage_verifier\r\npanscient\r\nparasite\r\npartnersite\r\npatric\r\npear.\r\npegasus\r\nperegrinator\r\npgp key agent\r\nphantom\r\nphpdig\r\npicosearch\r\npiltdownman\r\npimptrain\r\npinpoint\r\npioneer\r\npiranha\r\nplumtreewebaccessor\r\npogodak\r\npoirot\r\npompos\r\npoppelsdorf\r\npoppi\r\npopular iconoclast\r\npsycheclone\r\npublisher\r\npython\r\nrambler\r\nraven search\r\nroach\r\nroad runner\r\nroadhouse\r\nrobbie\r\nrobofox\r\nrobozilla\r\nrules\r\nsalty\r\nsbider\r\nscooter\r\nscoutjet\r\nscrubby\r\nsearch.\r\nsearchprocess\r\nsemanticdiscovery\r\nsenrigan\r\nsg-scout\r\nshai\'hulud\r\nshark\r\nshopwiki\r\nsidewinder\r\nsift\r\nsilk\r\nsimmany\r\nsite searcher\r\nsite valet\r\nsitetech-rover\r\nskymob.com\r\nsleek\r\nsmartwit\r\nsna-\r\nsnappy\r\nsnooper\r\nsohu\r\nspeedfind\r\nsphere\r\nsphider\r\nspinner\r\nspyder\r\nsteeler/\r\nsuke\r\nsuntek\r\nsupersnooper\r\nsurfnomore\r\nsven\r\nsygol\r\nszukacz\r\ntach black widow\r\ntarantula\r\ntempleton\r\n/teoma\r\nt-h-u-n-d-e-r-s-t-o-n-e\r\ntheophrastus\r\ntitan\r\ntitin\r\ntkwww\r\ntoutatis\r\nt-rex\r\ntutorgig\r\ntwiceler\r\ntwisted\r\nucsd\r\nudmsearch\r\nurl check\r\nupdated\r\nvagabondo\r\nvalkyrie\r\nverticrawl\r\nvictoria\r\nvision-search\r\nvolcano\r\nvoyager/\r\nvoyager-hc\r\nw3c_validator\r\nw3m2\r\nw3mir\r\nwalker\r\nwallpaper\r\nwanderer\r\nwauuu\r\nwavefire\r\nweb core\r\nweb hopper\r\nweb wombat\r\nwebbandit\r\nwebcatcher\r\nwebcopy\r\nwebfoot\r\nweblayers\r\nweblinker\r\nweblog monitor\r\nwebmirror\r\nwebmonkey\r\nwebquest\r\nwebreaper\r\nwebsitepulse\r\nwebsnarf\r\nwebstolperer\r\nwebvac\r\nwebwalk\r\nwebwatch\r\nwebwombat\r\nwebzinger\r\nwhizbang\r\nwhowhere\r\nwild ferret\r\nworldlight\r\nwwwc\r\nwwwster\r\nxenu\r\nxget\r\nxift\r\nxirq\r\nyandex\r\nyanga\r\nyeti\r\nyodao\r\nzao\r\nzippp\r\nzyborg', 0),
+(1010, 0, 'config', 'config_logo', 'catalog/opencart-logo.png', 0),
+(1009, 0, 'config', 'config_captcha_page', '[\"review\",\"return\",\"contact\"]', 1),
+(1008, 0, 'config', 'config_captcha', '', 0),
+(1006, 0, 'config', 'config_return_id', '0', 0),
+(1007, 0, 'config', 'config_return_status_id', '2', 0),
+(1005, 0, 'config', 'config_affiliate_id', '4', 0),
+(1004, 0, 'config', 'config_affiliate_commission', '5', 0),
+(1003, 0, 'config', 'config_affiliate_auto', '0', 0),
+(1002, 0, 'config', 'config_affiliate_approval', '0', 0),
+(999, 0, 'config', 'config_stock_warning', '0', 0),
+(1000, 0, 'config', 'config_stock_checkout', '0', 0),
+(1001, 0, 'config', 'config_affiliate_group_id', '1', 0),
 (95, 0, 'payment_free_checkout', 'payment_free_checkout_status', '1', 0),
 (96, 0, 'payment_free_checkout', 'free_checkout_order_status_id', '1', 0),
 (97, 0, 'payment_free_checkout', 'payment_free_checkout_sort_order', '1', 0),
@@ -3323,27 +3338,27 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (122, 0, 'total_coupon', 'total_coupon_status', '1', 0),
 (123, 0, 'module_category', 'module_category_status', '1', 0),
 (124, 0, 'module_account', 'module_account_status', '1', 0),
-(247, 0, 'theme_default', 'theme_default_image_wishlist_width', '47', 0),
-(246, 0, 'theme_default', 'theme_default_image_compare_height', '90', 0),
-(245, 0, 'theme_default', 'theme_default_image_compare_width', '90', 0),
-(244, 0, 'theme_default', 'theme_default_image_related_height', '200', 0),
-(243, 0, 'theme_default', 'theme_default_image_related_width', '200', 0),
-(242, 0, 'theme_default', 'theme_default_image_additional_height', '74', 0),
-(241, 0, 'theme_default', 'theme_default_image_additional_width', '74', 0),
-(240, 0, 'theme_default', 'theme_default_image_product_height', '228', 0),
-(239, 0, 'theme_default', 'theme_default_image_product_width', '228', 0),
-(238, 0, 'theme_default', 'theme_default_image_popup_height', '500', 0),
-(237, 0, 'theme_default', 'theme_default_image_popup_width', '500', 0),
-(236, 0, 'theme_default', 'theme_default_image_thumb_height', '228', 0),
-(235, 0, 'theme_default', 'theme_default_image_thumb_width', '228', 0),
-(234, 0, 'theme_default', 'theme_default_image_manufacturer_height', '80', 0),
-(233, 0, 'theme_default', 'theme_default_image_manufacturer_width', '80', 0),
-(232, 0, 'theme_default', 'theme_default_image_category_height', '80', 0),
-(231, 0, 'theme_default', 'theme_default_image_category_width', '80', 0),
-(230, 0, 'theme_default', 'theme_default_product_description_length', '100', 0),
-(229, 0, 'theme_default', 'theme_default_product_limit', '15', 0),
-(228, 0, 'theme_default', 'theme_default_status', '1', 0),
-(227, 0, 'theme_default', 'theme_default_directory', 'plangui', 0),
+(740, 0, 'theme_default', 'theme_default_image_cart_height', '47', 0),
+(741, 0, 'theme_default', 'theme_default_image_location_width', '268', 0),
+(738, 0, 'theme_default', 'theme_default_image_wishlist_height', '47', 0),
+(739, 0, 'theme_default', 'theme_default_image_cart_width', '47', 0),
+(737, 0, 'theme_default', 'theme_default_image_wishlist_width', '47', 0),
+(736, 0, 'theme_default', 'theme_default_image_compare_height', '90', 0),
+(735, 0, 'theme_default', 'theme_default_image_compare_width', '90', 0),
+(734, 0, 'theme_default', 'theme_default_image_related_height', '200', 0),
+(733, 0, 'theme_default', 'theme_default_image_related_width', '200', 0),
+(732, 0, 'theme_default', 'theme_default_image_additional_height', '228', 0),
+(731, 0, 'theme_default', 'theme_default_image_additional_width', '228', 0),
+(730, 0, 'theme_default', 'theme_default_image_product_height', '228', 0),
+(729, 0, 'theme_default', 'theme_default_image_product_width', '228', 0),
+(727, 0, 'theme_default', 'theme_default_image_popup_width', '500', 0),
+(728, 0, 'theme_default', 'theme_default_image_popup_height', '500', 0),
+(726, 0, 'theme_default', 'theme_default_image_thumb_height', '228', 0),
+(725, 0, 'theme_default', 'theme_default_image_thumb_width', '228', 0),
+(724, 0, 'theme_default', 'theme_default_image_manufacturer_height', '80', 0),
+(723, 0, 'theme_default', 'theme_default_image_manufacturer_width', '80', 0),
+(722, 0, 'theme_default', 'theme_default_image_category_height', '80', 0),
+(721, 0, 'theme_default', 'theme_default_image_category_width', '80', 0),
 (151, 0, 'dashboard_activity', 'dashboard_activity_status', '1', 0),
 (152, 0, 'dashboard_activity', 'dashboard_activity_sort_order', '7', 0),
 (153, 0, 'dashboard_sale', 'dashboard_sale_status', '1', 0),
@@ -3395,6 +3410,7 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (199, 0, 'report_marketing', 'report_marketing_status', '1', 0),
 (200, 0, 'report_marketing', 'report_marketing_sort_order', '12', 0),
 (636, 0, 'developer', 'developer_sass', '0', 0),
+(742, 0, 'theme_default', 'theme_default_image_location_height', '50', 0),
 (715, 0, 'configblog', 'configblog_image_related_width', '450', 0),
 (716, 0, 'configblog', 'configblog_image_related_height', '450', 0),
 (714, 0, 'configblog', 'configblog_image_article_height', '370', 0),
@@ -3412,67 +3428,71 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (702, 0, 'configblog', 'configblog_article_count', '1', 0),
 (701, 0, 'configblog', 'configblog_meta_keyword', 'Блог для интернет магазина на OpenCart', 0),
 (223, 0, 'module_blog_category', 'module_blog_category_status', '1', 0),
-(591, 0, 'config', 'config_affiliate_auto', '0', 0),
-(588, 0, 'config', 'config_stock_checkout', '0', 0),
-(585, 0, 'config', 'config_api_id', '1', 0),
-(584, 0, 'config', 'config_fraud_status_id', '16', 0),
-(583, 0, 'config', 'config_complete_status', '[\"3\",\"5\"]', 1),
-(582, 0, 'config', 'config_processing_status', '[\"2\",\"3\",\"1\",\"12\",\"5\"]', 1),
-(581, 0, 'config', 'config_order_status_id', '1', 0),
-(579, 0, 'config', 'config_checkout_guest', '1', 0),
-(580, 0, 'config', 'config_checkout_id', '5', 0),
-(578, 0, 'config', 'config_cart_weight', '1', 0),
-(577, 0, 'config', 'config_invoice_prefix', 'INV-2021-00', 0),
-(576, 0, 'config', 'config_account_id', '3', 0),
-(575, 0, 'config', 'config_login_attempts', '5', 0),
-(574, 0, 'config', 'config_customer_price', '0', 0),
-(573, 0, 'config', 'config_customer_group_display', '[\"1\"]', 1),
-(572, 0, 'config', 'config_customer_group_id', '1', 0),
-(571, 0, 'config', 'config_customer_search', '0', 0),
-(248, 0, 'theme_default', 'theme_default_image_wishlist_height', '47', 0),
-(249, 0, 'theme_default', 'theme_default_image_cart_width', '47', 0),
-(250, 0, 'theme_default', 'theme_default_image_cart_height', '47', 0),
-(251, 0, 'theme_default', 'theme_default_image_location_width', '268', 0),
-(252, 0, 'theme_default', 'theme_default_image_location_height', '50', 0),
+(997, 0, 'config', 'config_api_id', '1', 0),
+(998, 0, 'config', 'config_stock_display', '0', 0),
+(995, 0, 'config', 'config_complete_status', '[\"3\",\"5\"]', 1),
+(996, 0, 'config', 'config_fraud_status_id', '16', 0),
+(994, 0, 'config', 'config_processing_status', '[\"2\",\"3\",\"1\",\"12\",\"5\"]', 1),
+(993, 0, 'config', 'config_order_status_id', '1', 0),
+(992, 0, 'config', 'config_checkout_id', '5', 0),
+(991, 0, 'config', 'config_checkout_guest', '1', 0),
+(990, 0, 'config', 'config_cart_weight', '1', 0),
+(989, 0, 'config', 'config_invoice_prefix', 'INV-2021-00', 0),
+(988, 0, 'config', 'config_account_id', '3', 0),
+(987, 0, 'config', 'config_login_attempts', '5', 0),
+(986, 0, 'config', 'config_customer_price', '0', 0),
+(985, 0, 'config', 'config_customer_group_display', '[\"1\"]', 1),
+(984, 0, 'config', 'config_customer_group_id', '1', 0),
+(983, 0, 'config', 'config_customer_search', '0', 0),
+(982, 0, 'config', 'config_customer_activity', '0', 0),
+(720, 0, 'theme_default', 'theme_default_product_description_length', '100', 0),
+(719, 0, 'theme_default', 'theme_default_product_limit', '15', 0),
+(718, 0, 'theme_default', 'theme_default_status', '1', 0),
+(717, 0, 'theme_default', 'theme_default_directory', 'plangui', 0),
 (635, 0, 'developer', 'developer_theme', '0', 0),
-(570, 0, 'config', 'config_customer_activity', '0', 0),
-(569, 0, 'config', 'config_customer_online', '0', 0),
-(568, 0, 'config', 'config_tax_customer', 'shipping', 0),
-(567, 0, 'config', 'config_tax_default', 'shipping', 0),
-(566, 0, 'config', 'config_tax', '1', 0),
-(565, 0, 'config', 'config_voucher_max', '1000', 0),
-(564, 0, 'config', 'config_voucher_min', '1', 0),
-(563, 0, 'config', 'config_review_guest', '1', 0),
-(562, 0, 'config', 'config_review_status', '1', 0),
-(561, 0, 'config', 'config_limit_admin', '20', 0),
-(560, 0, 'config', 'config_product_count', '1', 0),
-(559, 0, 'config', 'config_weight_class_id', '1', 0),
-(558, 0, 'config', 'config_length_class_id', '1', 0),
-(557, 0, 'config', 'config_currency_auto', '1', 0),
-(556, 0, 'config', 'config_currency', 'RUB', 0),
-(555, 0, 'config', 'config_admin_language', 'ru-ru', 0),
-(554, 0, 'config', 'config_language', 'ru-ru', 0),
-(553, 0, 'config', 'config_zone_id', '2761', 0),
-(552, 0, 'config', 'config_country_id', '176', 0),
-(551, 0, 'config', 'config_comment', '', 0),
-(550, 0, 'config', 'config_open', '', 0),
-(549, 0, 'config', 'config_image', '', 0),
-(548, 0, 'config', 'config_fax', '', 0),
-(547, 0, 'config', 'config_telephone', '123456789', 0),
-(545, 0, 'config', 'config_geocode', '', 0),
-(546, 0, 'config', 'config_email', 'stepan_sokolov@mail.ru', 0),
-(544, 0, 'config', 'config_address', 'Адрес', 0),
-(542, 0, 'config', 'config_name', 'Ваш магазин', 0),
-(543, 0, 'config', 'config_owner', 'Ваш магазин', 0),
-(541, 0, 'config', 'config_layout_id', '4', 0),
-(540, 0, 'config', 'config_theme', 'default', 0),
-(539, 0, 'config', 'config_meta_keyword', '', 0),
-(538, 0, 'config', 'config_meta_description', 'Мой магазин', 0),
-(537, 0, 'config', 'config_meta_title', 'Ваш магазин', 0),
+(981, 0, 'config', 'config_customer_online', '0', 0),
+(980, 0, 'config', 'config_tax_customer', 'shipping', 0),
+(979, 0, 'config', 'config_tax_default', 'shipping', 0),
+(978, 0, 'config', 'config_tax', '1', 0),
+(977, 0, 'config', 'config_voucher_max', '1000', 0),
+(976, 0, 'config', 'config_voucher_min', '1', 0),
+(973, 0, 'config', 'config_limit_admin', '20', 0),
+(974, 0, 'config', 'config_review_status', '1', 0),
+(975, 0, 'config', 'config_review_guest', '1', 0),
+(972, 0, 'config', 'config_product_count', '1', 0),
+(969, 0, 'config', 'config_currency_auto', '1', 0),
+(970, 0, 'config', 'config_length_class_id', '1', 0),
+(971, 0, 'config', 'config_weight_class_id', '1', 0),
+(967, 0, 'config', 'config_autocalc_select_first', '1', 0),
+(968, 0, 'config', 'config_autocalc_hide_option_price', '1', 0),
+(966, 0, 'config', 'config_autocalc_not_mul_qty', '0', 0),
+(965, 0, 'config', 'config_autocalc_option_discount', '0', 0),
+(964, 0, 'config', 'config_autocalc_option_special', '0', 0),
+(963, 0, 'config', 'config_currency2', 'RUB', 0),
+(962, 0, 'config', 'config_currency', 'RUB', 0),
+(961, 0, 'config', 'config_admin_language', 'ru-ru', 0),
+(960, 0, 'config', 'config_language', 'ru-ru', 0),
+(959, 0, 'config', 'config_zone_id', '2761', 0),
+(958, 0, 'config', 'config_country_id', '176', 0),
+(956, 0, 'config', 'config_open', '', 0),
+(957, 0, 'config', 'config_comment', '', 0),
+(955, 0, 'config', 'config_image', '', 0),
+(953, 0, 'config', 'config_telephone', '123456789', 0),
+(954, 0, 'config', 'config_fax', '', 0),
+(952, 0, 'config', 'config_email', 'stepan_sokolov@mail.ru', 0),
+(950, 0, 'config', 'config_address', 'Адрес', 0),
+(951, 0, 'config', 'config_geocode', '', 0),
+(949, 0, 'config', 'config_owner', 'Ваш магазин', 0),
+(948, 0, 'config', 'config_name', 'Ваш магазин', 0),
+(947, 0, 'config', 'config_layout_id', '4', 0),
 (698, 0, 'configblog', 'configblog_html_h1', 'Блог для интернет магазина на OpenCart', 0),
 (699, 0, 'configblog', 'configblog_meta_title', 'Блог для интернет магазина на OpenCart', 0),
 (700, 0, 'configblog', 'configblog_meta_description', 'Блог для интернет магазина на OpenCart', 0),
-(697, 0, 'configblog', 'configblog_name', 'Блог', 0);
+(697, 0, 'configblog', 'configblog_name', 'Блог', 0),
+(946, 0, 'config', 'config_theme', 'default', 0),
+(945, 0, 'config', 'config_meta_keyword', '', 0),
+(943, 0, 'config', 'config_meta_title', 'Ваш магазин', 0),
+(944, 0, 'config', 'config_meta_description', 'Мой магазин', 0);
 
 -- --------------------------------------------------------
 
@@ -9124,7 +9144,7 @@ ALTER TABLE `oc_blog_category`
 -- AUTO_INCREMENT для таблицы `oc_cart`
 --
 ALTER TABLE `oc_cart`
-  MODIFY `cart_id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `cart_id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT для таблицы `oc_category`
@@ -9256,7 +9276,7 @@ ALTER TABLE `oc_extension`
 -- AUTO_INCREMENT для таблицы `oc_extension_install`
 --
 ALTER TABLE `oc_extension_install`
-  MODIFY `extension_install_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `extension_install_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `oc_extension_path`
@@ -9340,7 +9360,7 @@ ALTER TABLE `oc_marketing`
 -- AUTO_INCREMENT для таблицы `oc_modification`
 --
 ALTER TABLE `oc_modification`
-  MODIFY `modification_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `modification_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `oc_module`
@@ -9436,7 +9456,7 @@ ALTER TABLE `oc_product_discount`
 -- AUTO_INCREMENT для таблицы `oc_product_image`
 --
 ALTER TABLE `oc_product_image`
-  MODIFY `product_image_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2395;
+  MODIFY `product_image_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2405;
 
 --
 -- AUTO_INCREMENT для таблицы `oc_product_option`
@@ -9514,13 +9534,13 @@ ALTER TABLE `oc_review_article`
 -- AUTO_INCREMENT для таблицы `oc_seo_url`
 --
 ALTER TABLE `oc_seo_url`
-  MODIFY `seo_url_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1050;
+  MODIFY `seo_url_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1060;
 
 --
 -- AUTO_INCREMENT для таблицы `oc_setting`
 --
 ALTER TABLE `oc_setting`
-  MODIFY `setting_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=717;
+  MODIFY `setting_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1043;
 
 --
 -- AUTO_INCREMENT для таблицы `oc_statistics`

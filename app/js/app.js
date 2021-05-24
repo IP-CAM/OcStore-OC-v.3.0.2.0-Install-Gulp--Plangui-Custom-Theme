@@ -4,7 +4,7 @@
 // window.$ = $
 
 import mmenu from 'mmenu-js'
-// import slick from 'slick-carousel'
+import slick from 'slick-carousel'
 
 // // Import vendor jQuery plugin example (not module)
 // require('~/app/libs/mmenu/dist/mmenu.js')
