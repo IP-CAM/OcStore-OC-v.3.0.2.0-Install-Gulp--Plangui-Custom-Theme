@@ -1,5 +1,9 @@
 .event-card
     margin-bottom: 30px
+    display: flex
+    width: 100%
+    @include media-breakpoint-down(md)
+        flex-direction: column
     
 .event-image
     display: block
@@ -9,5 +13,11 @@
     background-repeat: no-repeat
     background-size: cover
     @include media-breakpoint-down(md)
-        height: 300px
         margin-bottom: 15px
+        min-height: 300px
+
+h2 a
+    color: #000
+    &:hover
+        text-decoration: none
+        color: #000
