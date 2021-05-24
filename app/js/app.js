@@ -28,23 +28,26 @@ document.addEventListener('DOMContentLoaded', () => {
 	// 	 prevArrow: '<div class="slider-arrow slider-arrow_prev"><svg width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.02539 6.87695L6.70898 1.19336C6.8457 1.05664 7.01172 0.988281 7.20703 0.988281C7.40234 0.988281 7.56836 1.05664 7.70508 1.19336L8.34961 1.83789C8.48633 1.97461 8.55469 2.14062 8.55469 2.33594C8.57422 2.53125 8.51562 2.69727 8.37891 2.83398L3.83789 7.375L8.37891 11.916C8.51562 12.0527 8.57422 12.2188 8.55469 12.4141C8.55469 12.6094 8.48633 12.7754 8.34961 12.9121L7.70508 13.5566C7.56836 13.6934 7.40234 13.7617 7.20703 13.7617C7.01172 13.7617 6.8457 13.6934 6.70898 13.5566L1.02539 7.87305C0.869141 7.73633 0.791016 7.57031 0.791016 7.375C0.791016 7.17969 0.869141 7.01367 1.02539 6.87695Z" fill="white"/></svg></div>'
 	//  })
 
-	// // Product card carousel
-	// $('.product-carousel-for').slick({
-	// 	slidesToShow: 1,
-	// 	slidesToScroll: 1,
-	// 	arrows: false,
-	// 	fade: true,
-	// 	asNavFor: '.product-carousel-nav'
-	// });
-	// $('.product-carousel-nav').slick({
-	// 	slidesToShow: 3,
-	// 	slidesToScroll: 1,
-	// 	asNavFor: '.product-carousel-for',
-	// 	dots: false,
-	// 	arrows: false,
-	// 	centerMode: false,
-	// 	focusOnSelect: true
-	// });	
+
+
+	// Product card carousel
+	$('.product-carousel-for').slick({
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		arrows: false,
+		fade: true,
+		asNavFor: '.product-carousel-nav'
+	});
+	
+	$('.product-carousel-nav').slick({
+		slidesToShow: 3,
+		slidesToScroll: 1,
+		asNavFor: '.product-carousel-for',
+		dots: true,
+		centerMode: true,
+		focusOnSelect: true
+	});
+
 
 	// Product card amount change
 	function setQuality () {
