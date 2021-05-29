@@ -96,9 +96,9 @@ function cleandist() {
 }
 
 function deploy() {
-	return src('dist/')
+	return src('admin/**')
 		.pipe(rsync({
-			root: 'dist/',
+			root: 'admin/',
 			hostname: 'nomoreli@nomorelies.ru',
 			destination: 'www/nomorelies.ru/',
 			// clean: true, // Mirror copy with file deletion

@@ -6,6 +6,8 @@
 import mmenu from 'mmenu-js'
 // import Swiper JS
 import Swiper from 'swiper';
+import SwiperCore, { Thumbs } from 'swiper/core';
+SwiperCore.use([Thumbs]);
 
 
 
