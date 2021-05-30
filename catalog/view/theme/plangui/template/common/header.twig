@@ -57,10 +57,7 @@
 		<div id="my-header">
 			<nav id="my-menu" style="display: none">
         <ul>
-            <li><a href="/kolekciya-aromatov">{{ text_menu_item1 }}</a></li>
-            <li><a href="/parfyumernye-svechi">{{ text_menu_item2 }}</a></li>
-            <li><a href="/about_us">{{ text_menu_item3 }}</a></li>
-            <li><a href="/sobytiya">{{ text_menu_item4 }}</a></li>
+			{{ menu }}
         </ul>
       </nav>
 			<header>
@@ -82,22 +79,20 @@
 					</div>
 				</div>
 			</header>
-
 			<div class="menu">
 				<div class="container">
-					<ul class="menu-list">
-						<li class="menu-item">
-							<a href="/kolekciya-aromatov">{{ text_menu_item1 }}</a></li>
-						<li class="menu-item"><a href="/parfyumernye-svechi">{{ text_menu_item2 }}</a></li>
-						<li class="menu-item"><a href="/about_us">{{ text_menu_item3 }}</a></li>
-						<li class="menu-item"><a href="/sobytiya">{{ text_menu_item4 }}</a></li>
-					</ul>	
-					<a href="#my-menu" class="menu-link">
-						<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon">
-							<path d="M0.5 3.125H13.5C13.75 3.125 14 2.90625 14 2.625V1.375C14 1.125 13.75 0.875 13.5 0.875H0.5C0.21875 0.875 0 1.125 0 1.375V2.625C0 2.90625 0.21875 3.125 0.5 3.125ZM0.5 8.125H13.5C13.75 8.125 14 7.90625 14 7.625V6.375C14 6.125 13.75 5.875 13.5 5.875H0.5C0.21875 5.875 0 6.125 0 6.375V7.625C0 7.90625 0.21875 8.125 0.5 8.125ZM0.5 13.125H13.5C13.75 13.125 14 12.9062 14 12.625V11.375C14 11.125 13.75 10.875 13.5 10.875H0.5C0.21875 10.875 0 11.125 0 11.375V12.625C0 12.9062 0.21875 13.125 0.5 13.125Z" fill="#8E2216"/>
-						</svg>							
-						Меню
-					</a>		
+				  <ul class="menu-list">
+					{{ menu }}
+				  </ul>
+				  <a href="#my-menu" class="menu-link">
+					<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon">
+					  <path
+						d="M0.5 3.125H13.5C13.75 3.125 14 2.90625 14 2.625V1.375C14 1.125 13.75 0.875 13.5 0.875H0.5C0.21875 0.875 0 1.125 0 1.375V2.625C0 2.90625 0.21875 3.125 0.5 3.125ZM0.5 8.125H13.5C13.75 8.125 14 7.90625 14 7.625V6.375C14 6.125 13.75 5.875 13.5 5.875H0.5C0.21875 5.875 0 6.125 0 6.375V7.625C0 7.90625 0.21875 8.125 0.5 8.125ZM0.5 13.125H13.5C13.75 13.125 14 12.9062 14 12.625V11.375C14 11.125 13.75 10.875 13.5 10.875H0.5C0.21875 10.875 0 11.125 0 11.375V12.625C0 12.9062 0.21875 13.125 0.5 13.125Z"
+						fill="#8E2216" />
+					</svg>
+					Меню
+				  </a>
 				</div>
-			</div>
+			  </div>
+
 		</div>

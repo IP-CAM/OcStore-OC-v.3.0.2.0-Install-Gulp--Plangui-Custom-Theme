@@ -383,6 +383,14 @@ class ControllerCatalogInformation extends Controller {
 			$data['bottom'] = 0;
 		}
 
+		if (isset($this->request->post['menu_top'])) {
+			$data['menu_top'] = $this->request->post['menu_top'];
+		} elseif (!empty($information_info)) {
+			$data['menu_top'] = $information_info['menu_top'];
+		} else {
+			$data['menu_top'] = 0;
+		}
+
 		if (isset($this->request->post['status'])) {
 			$data['status'] = $this->request->post['status'];
 		} elseif (!empty($information_info)) {
