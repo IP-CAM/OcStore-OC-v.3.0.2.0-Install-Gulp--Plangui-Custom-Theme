@@ -3,15 +3,9 @@
     <div class="row d-flex align-items-center">
       <div class="col-lg-4 d-flex justify-content-center justify-content-lg-start">
         <ul class="footer-menu">
-          <li>
-            <a href="/kontakty">{{ text_menu_contacts }}</a>
-          </li>
-          <li>
-            <a href="/dostavka">{{ text_menu_delivery }}</a>
-          </li>
-          <li>
-            <a href="/privacy">{{ text_menu_privacy }}</a>
-          </li>
+          {% for information in informations %}
+          <li><a href="{{ information.href }}">{{ information.title }}</a></li>
+          {% endfor %}
         </ul>
       </div>
       <div class="col-lg-4 d-flex justify-content-center">
