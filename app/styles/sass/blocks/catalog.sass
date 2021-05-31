@@ -1,7 +1,6 @@
 .product-card
     position: relative
     text-align: center
-    border-bottom: 1px solid #ABABAB
     width: 320px
     margin-bottom: 60px
     transition: all .3s ease
@@ -25,24 +24,16 @@
             text-decoration: none
             margin-bottom: 15px
     &-more
-        position: absolute
-        left: 50%
-        transform: translateX(-50%)
-        bottom: 30px
         opacity: 0
         margin: auto
         margin-top: 15px
         transition: opacity .6s ease
         transition-delay: .5s
     &:hover
-        border-bottom: 1px solid #fff
         .product-card-more
             opacity: 1
-        p
-            opacity: 0
+
     @include media-breakpoint-down(md)
         margin-bottom: 40px
         .product-card-more
             margin-bottom: 5px
-        &:hover
-            border-bottom: 1px solid #ABABAB
